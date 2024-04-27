@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2024/04/27 09:15:50.711,D:\Fontes\FormacaoDelphi-2024\AplicacaoDOS.dproj=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2024/04/27 09:47:58.635,=D:\Fontes\FormacaoDelphi-2024\Unit1.pas</Transaction>
+    <Transaction>2024/04/27 09:48:21.460,D:\Fontes\FormacaoDelphi-2024\Procedural\uProcedural.pas=D:\Fontes\FormacaoDelphi-2024\Unit1.pas</Transaction>
+    <Transaction>2024/04/27 10:26:07.710,=D:\Fontes\FormacaoDelphi-2024\Unit1.pas</Transaction>
+    <Transaction>2024/04/27 10:26:48.262,D:\Fontes\FormacaoDelphi-2024\InterfaceGrafica\uInterfGrafica.fmx=D:\Fontes\FormacaoDelphi-2024\Unit1.fmx</Transaction>
+    <Transaction>2024/04/27 10:26:48.262,D:\Fontes\FormacaoDelphi-2024\InterfaceGrafica\uInterfGrafica.pas=D:\Fontes\FormacaoDelphi-2024\Unit1.pas</Transaction>
+    <Transaction>2024/04/27 10:27:36.993,D:\Fontes\FormacaoDelphi-2024\InterfaceGrafica\uInterfGrafica.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

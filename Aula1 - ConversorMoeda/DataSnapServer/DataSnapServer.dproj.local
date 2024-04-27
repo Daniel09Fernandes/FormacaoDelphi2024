@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2024/04/27 15:56:55.481,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2024/04/27 15:56:55.929,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\WebModuleUnit1.pas</Transaction>
+    <Transaction>2024/04/27 15:56:56.288,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\ServerConst1.pas</Transaction>
+    <Transaction>2024/04/27 15:56:56.498,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\base64.js</Transaction>
+    <Transaction>2024/04/27 15:56:56.622,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\serverfunctionexecutor.js</Transaction>
+    <Transaction>2024/04/27 15:56:56.721,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\json2.js</Transaction>
+    <Transaction>2024/04/27 15:56:56.842,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\callbackframework.js</Transaction>
+    <Transaction>2024/04/27 15:56:56.997,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\serverfunctions.js</Transaction>
+    <Transaction>2024/04/27 15:56:57.108,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\base64-min.js</Transaction>
+    <Transaction>2024/04/27 15:56:57.259,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\json2-min.js</Transaction>
+    <Transaction>2024/04/27 15:56:57.404,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\serverfunctionexecutor-min.js</Transaction>
+    <Transaction>2024/04/27 15:56:57.541,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\callbackframework-min.js</Transaction>
+    <Transaction>2024/04/27 15:56:57.689,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\connection.js</Transaction>
+    <Transaction>2024/04/27 15:56:57.838,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\js\serverfunctioninvoker.js</Transaction>
+    <Transaction>2024/04/27 15:56:57.969,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\css\main.css</Transaction>
+    <Transaction>2024/04/27 15:56:58.122,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\css\serverfunctioninvoker.css</Transaction>
+    <Transaction>2024/04/27 15:56:58.281,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\templates\reversestring.html</Transaction>
+    <Transaction>2024/04/27 15:56:58.454,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\templates\serverfunctioninvoker.html</Transaction>
+    <Transaction>2024/04/27 15:56:58.608,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\images\collapse.png</Transaction>
+    <Transaction>2024/04/27 15:56:58.754,=D:\Fontes\FormacaoDelphi-2024\DataSnapServer\images\expand.png</Transaction>
+    <Transaction>2024/04/27 16:08:20.145,=D:\Fontes\FormacaoDelphi-2024\InterfaceGrafica\uConversorGenerico.pas</Transaction>
+  </Transactions>
+</BorlandProject>

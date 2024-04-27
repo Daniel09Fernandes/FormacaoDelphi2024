@@ -1,0 +1,85 @@
+unit uInterfGrafica;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Controls.Presentation, FMX.Edit;
+
+type
+  TForm2 = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    edtDolar: TEdit;
+    EdtResultDolar: TEdit;
+    EdtReal: TEdit;
+    EdtResultReal: TEdit;
+    procedure edtDolarKeyUp(Sender: TObject; var Key: Word;var KeyChar: WideChar; Shift: TShiftState);
+    procedure EdtRealKeyUp(Sender: TObject; var Key: Word;
+      var KeyChar: WideChar; Shift: TShiftState);
+  private
+
+  public
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.fmx}
+uses uConversorGenerico;
+
+
+procedure TForm2.EdtRealKeyUp(Sender: TObject; var Key: Word;  var KeyChar: WideChar; Shift: TShiftState);
+//var Conversor : TConversorMoedas;
+begin
+//   var Conversor := TConversorMoedas.Create;
+//   try
+//     if edtReal.Text.Trim.IsEmpty then
+//       exit;
+//
+//    {$REGION 'Exemplo String'}
+//     var S: string;
+//      S := 'SELECT '+
+//               'CAMPO1 '+
+//               'CAMPO2 '+
+//               'CAMPO3 '+
+//             'FROM TABELA1 '+
+//             'WHERE '+
+//             '  CAMPO1 = :CAMPO';
+//
+//      S := '''
+//               SELECT
+//                 CAMPO1
+//                 CAMPO2
+//                 CAMPO3
+//               FROM TABELA 1
+//               WHERE
+//                 CAMPO1 = :CAMPO
+//      ''' ;
+//    {$ENDREGION}
+//
+//     EdtResultDolar.Text := Conversor.ConverterRealParaDolar(EdtDolar.Text.ToDouble).toString;
+//
+//   finally
+//     FreeAndNil(Conversor);
+//   end;
+end;
+
+procedure TForm2.edtDolarKeyUp(Sender: TObject; var Key: Word;  var KeyChar: WideChar; Shift: TShiftState);
+begin
+   var Conversor := TConversorMoedaGenerico<String>.Create;
+   try
+     EdtResultReal.Text :=  Conversor.ConverterDolarParaReal(EdtReal.Text);
+   finally
+     FreeAndNil(Conversor);
+   end;
+end;
+
+end.

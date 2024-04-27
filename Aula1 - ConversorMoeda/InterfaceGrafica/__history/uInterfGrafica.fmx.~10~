@@ -1,0 +1,105 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 246
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = MostTop
+    Size.Width = 640.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Label1: TLabel
+      Align = Center
+      StyledSettings = [Family, Style, FontColor]
+      Size.Width = 154.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Trimming = None
+      Text = 'Conversor de Moedas'
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Align = MostTop
+    Position.Y = 49.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 96.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object Label2: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 32.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Trimming = None
+      Text = 'Dolar para Real'
+      TabOrder = 1
+    end
+    object edtDolar_: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      Position.X = 152.000000000000000000
+      Position.Y = 25.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      OnKeyUp = edtDolar_KeyUp
+    end
+    object EdtResultDolar: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 2
+      Position.X = 288.000000000000000000
+      Position.Y = 25.000000000000000000
+      Enabled = False
+      Size.Width = 257.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object Panel3: TPanel
+    Align = MostTop
+    Position.Y = 145.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 96.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Label3: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 40.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Trimming = None
+      Text = 'Real Para Dolar'
+      TabOrder = 1
+    end
+    object EdtReal: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      Position.X = 152.000000000000000000
+      Position.Y = 33.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      OnKeyUp = EdtRealKeyUp
+    end
+    object EdtResultReal: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 2
+      Position.X = 288.000000000000000000
+      Position.Y = 33.000000000000000000
+      Enabled = False
+      Size.Width = 257.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+end

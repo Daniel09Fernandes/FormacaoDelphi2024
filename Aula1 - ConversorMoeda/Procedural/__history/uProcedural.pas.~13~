@@ -1,0 +1,50 @@
+unit uProcedural;
+
+interface
+
+Type
+  TConversorMoeda = class
+    private
+      const COTACAO_DOLAR = 5.12;
+    public
+//     class function ConverterRealParaDolar(AReal: double): double;
+//     class function ConverterDolarParaReal(ADolar: double): double;
+       function ConverterRealParaDolar(AReal: double): double;
+       function ConverterDolarParaReal(ADolar: double): double;
+  end;
+
+implementation
+ //Procedural
+//function ConverterDolarParaReal(ADolar: double): double;
+//begin
+//  Result := ADolar / COTACAO_DOLAR;
+//end;
+//
+//function ConverterRealParaDolar(AReal: double): double;
+//begin
+//  Result := AReal * COTACAO_DOLAR;
+//end;
+
+//class function TConversorMoeda.ConverterDolarParaReal(ADolar: double): double;
+//begin
+//   Result := ADolar / COTACAO_DOLAR;
+//end;
+//
+//class function TConversorMoeda.ConverterRealParaDolar(AReal: double): double;
+//begin
+//  Result := AReal * COTACAO_DOLAR;
+//end;
+
+{ TConversorMoeda }
+
+function TConversorMoeda.ConverterDolarParaReal(ADolar: double): double;
+begin
+   Result := ADolar / COTACAO_DOLAR;
+end;
+
+function TConversorMoeda.ConverterRealParaDolar(AReal: double): double;
+begin
+   Result := AReal * COTACAO_DOLAR;
+end;
+
+end.

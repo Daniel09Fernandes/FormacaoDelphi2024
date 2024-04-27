@@ -1,0 +1,97 @@
+﻿unit uConversor;
+
+interface
+
+uses
+  System.SysUtils;
+Type
+
+   //Enum
+   TPMoeda = (Dolar, Real);
+
+   RecordMoedas = record
+     TipoMoeda : TPMoeda;
+   end;
+
+  TConversorMoedas = class
+  private
+   const
+      COTACAO_DOLAR = 5.12;
+
+    function ValidarValores(AValor: string): double;
+    function CalculoDolarParaReal(AValor: Double): Double;
+    procedure populaDicionario;
+  public
+    function ConverterDolarParaReal(ADolar: double): double; overload;
+    function ConverterDolarParaReal(ADolar: string): double; overload;
+
+    function ConverterRealParaDolar(AReal: double): double; overload;
+    function ConverterRealParaDolar(AReal: string): double; overload;
+  end;
+
+implementation
+
+uses
+  System.Generics.Collections;
+
+{ TConversorMoedas }
+
+function TConversorMoedas.ConverterDolarParaReal(ADolar: double): double;
+begin
+  Result := CalculoDolarParaReal(ADolar);
+end;
+
+function TConversorMoedas.ConverterDolarParaReal(ADolar: string): double;
+begin
+  Result := CalculoDolarParaReal(ValidarValores(ADolar));
+end;
+
+function TConversorMoedas.ConverterRealParaDolar(AReal: string): double;
+begin
+  Result := ValidarValores(AReal) / COTACAO_DOLAR;
+end;
+
+function TConversorMoedas.ConverterRealParaDolar(AReal: double): double;
+{$REGION 'Operações'}
+  function Operacao: double;
+  begin
+    Result := AReal / COTACAO_DOLAR;
+  end;
+{$ENDREGION}
+
+begin
+  if AReal = 0 then
+    exit(0);
+
+  Result := Operacao;
+end;
+
+function TConversorMoedas.ValidarValores(AValor: string ): double;
+begin
+  var output: double;
+
+  if (not AValor.Trim.IsEmpty) and ( not TryStrToFloat(AValor, output)) then
+     exit(0);
+
+  Result := output;
+end;
+
+function TConversorMoedas.CalculoDolarParaReal(AValor:  Double):Double;
+begin
+  Result := AValor * COTACAO_DOLAR;
+end;
+
+
+procedure TConversorMoedas.populaDicionario;
+begin
+  var RecMoeda :TMoedas;
+   RecMoeda.TipoMoeda := Dolar;
+
+  var Dicionario := TDictionary<TPMoeda, TMoedas>.Create;
+   //var Dicionario := TDictionary<string, Double>.Create;
+  if RecMoeda.TipoMoeda = Dolar then
+    Dicionario.Add(Dolar,RecMoeda);
+
+end;
+
+end.

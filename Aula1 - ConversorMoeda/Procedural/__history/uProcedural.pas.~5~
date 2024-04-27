@@ -1,0 +1,22 @@
+unit uProcedural;
+
+interface
+
+const COTACAO_DOLAR = 5.12;
+
+function ConverterRealParaDolar(AReal: double): double;
+function ConverterDolarParaReal(ADolar: double): double;
+
+implementation
+
+function ConverterDolarParaReal(ADolar: double): double;
+begin
+  Result := ADolar / COTACAO_DOLAR;
+end;
+
+function ConverterRealParaDolar(AReal: double): double;
+begin
+  Result := AReal * COTACAO_DOLAR;
+end;
+
+end.

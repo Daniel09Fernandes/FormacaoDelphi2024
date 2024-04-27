@@ -1,0 +1,74 @@
+unit uConversorGenerico;
+
+interface
+
+uses System.SysUtils, System.Rtti;
+
+type
+  TConversorMoedaGenerico<T> = class
+  private
+    function GetTipo(ATipo: T): TTypeKind;
+
+  public
+    function ConverterDolarParaReal(ADolar: T): T;
+    function ConverterRealParaDolar(AReal: T): T;
+  end;
+
+implementation
+
+uses uConversor;
+{ TConversorMoedaGenerico<T> }
+
+
+function  TConversorMoedaGenerico<T>.GetTipo(ATipo: T): TTypeKind;
+begin
+    var TesteTipo := GetTypeKind(ATipo);
+end;
+
+function TConversorMoedaGenerico<T>.ConverterDolarParaReal(ADolar: T): T;
+begin
+  var Conversor := TConversorMoedas.Create;
+  try
+    if GetTipo(ADolar) = tkUString then
+    begin
+      var valorString := TValue.From<T>(ADolar).AsType<string>;
+      Result := TValue.From<String>
+                             (Conversor.ConverterDolarParaReal(valorString).ToString)
+                              .AsType<T>;
+      exit;
+    end;
+
+    if TValue.From<T>(ADolar).Kind = tkFloat then
+    begin
+       var valorDouble := TValue.From<T>(ADolar).AsType<Double>;
+       Result  := TValue.From<Double>
+                               (Conversor.ConverterDolarParaReal(valorDouble))
+                               .AsType<T>;
+
+        exit;
+    end;
+  finally
+    FreeAndNil(Conversor);
+  end;
+end;
+
+function TConversorMoedaGenerico<T>.ConverterRealParaDolar(AReal: T): T;
+begin
+  var Conversor := TConversorMoedas.Create;
+  try
+    if GetTipo(AReal) = tkUString then
+    begin
+
+    end;
+
+    if GetTipo(AReal) = tkFloat then
+    begin
+
+    end;
+
+  finally
+   FreeAndNil(Conversor);
+  end;
+end;
+
+end.

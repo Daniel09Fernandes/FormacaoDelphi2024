@@ -1,0 +1,126 @@
+unit uConversor;
+
+interface
+
+uses
+  System.SysUtils;
+Type
+
+   //Enum
+   EnumTipoMoeda = (Dolar, Real);
+
+   RecordMoedas = record
+     TipoMoeda : EnumTipoMoeda;
+     Nome:string;
+     Idade: integer;
+   end;
+
+  TConversorMoedas = class
+  private
+   const
+      COTACAO_DOLAR = 5.12;
+
+    function ValidarValores(AValor: string): double;
+    function CalculoDolarParaReal(AValor: Double): Double;
+  public
+    function ConverterDolarParaReal(ADolar: double): double; overload;
+    function ConverterDolarParaReal(ADolar: string): double; overload;
+
+    function ConverterRealParaDolar(AReal: double): double; overload;
+    function ConverterRealParaDolar(AReal: string): double; overload;
+
+    procedure populaDicionario;
+  end;
+
+implementation
+
+uses
+  System.Generics.Collections;
+
+{ TConversorMoedas }
+
+function TConversorMoedas.ConverterDolarParaReal(ADolar: double): double;
+begin
+  Result := CalculoDolarParaReal(ADolar);
+end;
+
+function TConversorMoedas.ConverterDolarParaReal(ADolar: string): double;
+begin
+  Result := CalculoDolarParaReal(ValidarValores(ADolar));
+end;
+
+function TConversorMoedas.ConverterRealParaDolar(AReal: string): double;
+begin
+  Result := ValidarValores(AReal) / COTACAO_DOLAR;
+end;
+
+function TConversorMoedas.ConverterRealParaDolar(AReal: double): double;
+{$REGION 'Operações'}
+  function Operacao: double;
+  begin
+    Result := AReal / COTACAO_DOLAR;
+  end;
+{$ENDREGION}
+
+begin
+  if AReal = 0 then
+    exit(0);
+
+  Result := Operacao;
+end;
+
+function TConversorMoedas.ValidarValores(AValor: string ): double;
+begin
+  var output: double;
+
+  if (not AValor.Trim.IsEmpty) and ( not TryStrToFloat(AValor, output)) then
+     exit(0);
+
+  Result := output;
+end;
+
+function TConversorMoedas.CalculoDolarParaReal(AValor:  Double):Double;
+begin
+  Result := AValor * COTACAO_DOLAR;
+end;
+
+
+procedure TConversorMoedas.populaDicionario;
+begin
+  var RecMoeda1 :RecordMoedas;
+   RecMoeda1.TipoMoeda := Dolar;
+   RecMoeda1.Nome := 'Daniel';
+   RecMoeda1.Idade := 15;
+
+  var Dicionario := TDictionary<EnumTipoMoeda, RecordMoedas>.Create;
+   //var Dicionario := TDictionary<string, Double>.Create;
+  if RecMoeda1.TipoMoeda = Dolar then
+    Dicionario.Add(Dolar, RecMoeda1);
+
+  var RecMoeda2 :RecordMoedas;
+   RecMoeda2.TipoMoeda := Real;
+   RecMoeda2.Nome := 'Jose';
+   RecMoeda2.Idade := 25;
+
+  if RecMoeda2.TipoMoeda = Real then
+     Dicionario.Add(Real, RecMoeda2);
+
+   var RecMoedaOutput :RecordMoedas;
+   Dicionario.TryGetValue(Dolar,RecMoedaOutput);
+
+   Dicionario.TryGetValue(Real,RecMoedaOutput);
+
+   for var key in Dicionario.Keys do
+   begin
+     var RecLocal := Dicionario.Items[key];
+   end;
+
+   var cnt := Dicionario.Count-1;
+   while cnt <> -1 do
+   begin
+      Dicionario.Items[EnumTipoMoeda(cnt)];
+      cnt := cnt-1;
+   end;
+end;
+
+end.

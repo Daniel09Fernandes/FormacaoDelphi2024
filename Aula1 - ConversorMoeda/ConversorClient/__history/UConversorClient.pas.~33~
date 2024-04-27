@@ -1,0 +1,75 @@
+unit UConversorClient;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Mask, Vcl.StdCtrls,
+  REST.Types, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope;
+
+type
+  TForm3 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    EdtReal: TEdit;
+    EdtResultReal: TEdit;
+    EdtDolar: TEdit;
+    EdtResultDolar: TEdit;
+    procedure EdtRealKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdtDolarKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+  private
+    const CAMINHO_SERVIDOR = 'http://localhost:8080/datasnap/rest/TServerMethods1/';
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+uses REST.JSON, System.Json;
+
+procedure TForm3.EdtDolarKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+var Rest := TRESTClient.Create(CAMINHO_SERVIDOR+'ConverteRealParaDolar/'+EdtReal.Text);
+   var RestResquest := TRESTRequest.Create(self);
+   RestResquest.Client := Rest;
+   try
+      RestResquest.Execute;
+      var retorno :=   RestResquest.Response.JSONValue
+                                                .GetValue<TJSONArray>('result')
+                                                .Get(0)
+                                                .ToString
+                                                .Replace('"','');
+
+      EdtResultReal.Text :=  retorno;
+   finally
+     FreeAndNil(Rest);
+     FreeAndNil(RestResquest);
+   end;
+end;
+
+procedure TForm3.EdtRealKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+   var Rest := TRESTClient.Create(CAMINHO_SERVIDOR+'ConverteDolarParaReal/'+EdtReal.Text);
+   var RestResquest := TRESTRequest.Create(self);
+   RestResquest.Client := Rest;
+   try
+      RestResquest.Execute;
+      var retorno :=   RestResquest.Response.JSONValue
+                                                .GetValue<TJSONArray>('result')
+                                                .Get(0)
+                                                .ToString
+                                                .Replace('"','');
+
+      EdtResultReal.Text :=  retorno;
+   finally
+     FreeAndNil(Rest);
+     FreeAndNil(RestResquest);
+   end;
+end;
+
+end.

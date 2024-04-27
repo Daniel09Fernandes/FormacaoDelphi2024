@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{76D5B7B3-D526-41B7-884D-D7BA9A4374D1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AplicacaoDOS.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="InterfaceGrafica.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DataSnapServer\DataSnapServer.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AplicacaoDOS">
+        <MSBuild Projects="AplicacaoDOS.dproj"/>
+    </Target>
+    <Target Name="AplicacaoDOS:Clean">
+        <MSBuild Projects="AplicacaoDOS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AplicacaoDOS:Make">
+        <MSBuild Projects="AplicacaoDOS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="InterfaceGrafica">
+        <MSBuild Projects="InterfaceGrafica.dproj"/>
+    </Target>
+    <Target Name="InterfaceGrafica:Clean">
+        <MSBuild Projects="InterfaceGrafica.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="InterfaceGrafica:Make">
+        <MSBuild Projects="InterfaceGrafica.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DataSnapServer">
+        <MSBuild Projects="DataSnapServer\DataSnapServer.dproj"/>
+    </Target>
+    <Target Name="DataSnapServer:Clean">
+        <MSBuild Projects="DataSnapServer\DataSnapServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DataSnapServer:Make">
+        <MSBuild Projects="DataSnapServer\DataSnapServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AplicacaoDOS;InterfaceGrafica;DataSnapServer"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AplicacaoDOS:Clean;InterfaceGrafica:Clean;DataSnapServer:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AplicacaoDOS:Make;InterfaceGrafica:Make;DataSnapServer:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
