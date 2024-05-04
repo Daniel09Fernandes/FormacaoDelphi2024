@@ -1,0 +1,21 @@
+unit uQRCode.Api;
+
+interface
+uses uHttp.Bytes , System.Classes;
+  type
+    TQrCodeApi = class
+      private
+      public
+        class procedure GerarQrCode(AValor:string; AImg: TStream);
+    end;
+
+implementation
+
+{ TQrCodeApi }
+
+class procedure TQrCodeApi.GerarQrCode(AValor: string; AImg: TStream);
+begin
+
+end;
+
+end.

@@ -1,0 +1,35 @@
+unit uTema.conf;
+
+interface
+
+uses inifiles;
+type
+  TTemaPadrao = class
+    private
+       FIni: TInifile;
+    public
+       procedure GravarTema(AValue:string);
+       function BuscarTemaDefault:string;
+      constructor Create;
+  end;
+
+
+implementation
+
+{ TIniTema }
+
+function TTemaPadrao.BuscarTemaDefault: string;
+begin
+  FIni.ReadString('TEMA','default', '');
+end;
+
+constructor TTemaPadrao.Create;
+begin
+   FIni := TiniFile.Create(  'tema.ini');
+end;
+
+procedure TTemaPadrao.GravarTema(AValue: string);
+begin
+  FIni.writeString('TEMA','default',AValue);
+end;
+end.

@@ -1,0 +1,14 @@
+unit uHttp.Bytes;
+
+interface
+uses  System.Classes,WinApi.WinInet;
+type
+  THttpBytes = class
+    private
+    public
+      class procedure GetBytes(const AUrlFoto: string; AImage: TStream);
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C6DE524F-4BAC-483B-9F60-4A635CBDE197}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="JsonToDelphi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="JsonToDelphi">
+        <MSBuild Projects="JsonToDelphi.dproj"/>
+    </Target>
+    <Target Name="JsonToDelphi:Clean">
+        <MSBuild Projects="JsonToDelphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JsonToDelphi:Make">
+        <MSBuild Projects="JsonToDelphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="JsonToDelphi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="JsonToDelphi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="JsonToDelphi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

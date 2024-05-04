@@ -1,0 +1,22 @@
+unit uQRCode.Api;
+
+interface
+uses uHttp.Bytes , System.Classes;
+  type
+    TQrCodeApi = class
+      private
+        Const URL_QRCODE_API = 'https://qrcode.tec-it.com/API/QRCode?data=[VALOR]&backcolor=%23ffffff&size=small&quietzone=1&errorcorrection=H';
+      public
+        class procedure GerarQrCode(AValor:string; AImg: TStream);
+    end;
+
+implementation
+
+{ TQrCodeApi }
+
+class procedure TQrCodeApi.GerarQrCode(AValor: string; AImg: TStream);
+begin
+
+end;
+
+end.

@@ -1,0 +1,38 @@
+unit uPaises.Api;
+
+interface
+uses uPaises.Model, Rest.Client, REST.Json, sysUtils, StrUtils,
+  System.Classes, REST.Types;
+  type
+    TPaisApi = class
+      private
+        cons URL_PAISES = 'https://restcountries.com/v3.1/alpha/';
+      public
+        class function BuscarPais(ASigla: string):TPais;
+    end;
+
+implementation
+
+{ TPaisApi }
+
+class function TPaisApi.BuscarPais(ASigla: string): TPais;
+begin
+    var LRest := TRESTClient.Create(URL_POKEMON_API + ASigla);
+   var LReq  := TRESTRequest.Create(LRest);
+   try
+      LRest.Accept := '*/*';
+      LRest.ContentType := 'application/json';
+
+      LReq.Client := LRest;
+      LReq.Method := rmGET;
+
+      LReq.Execute;
+
+      Result := TJson.JsonToObject<TPokemon>(LReq.Response.JSonValue.ToString);
+   finally
+      LReq.Free;
+      LRest.Free;
+   end;
+end;
+
+end.

@@ -1,0 +1,34 @@
+unit uTema.conf;
+
+interface
+
+uses inifiles;
+type
+  TIniTema = class
+    private
+       FIni: TInifile;
+    public
+      procedure GravarTema(AValue:string);
+      constructor Create;
+  end;
+
+
+implementation
+
+{ TIniTema }
+
+constructor TIniTema.Create;
+begin
+   FIni := TiniFile.Create('tema.ini');
+end;
+
+procedure TIniTema.GravarTema(AValue: string);
+begin
+  FIni.writeString('TEMA','default',AValue);
+end;
+
+
+const S ='''
+        [TEMA]
+          default = ''
+end.

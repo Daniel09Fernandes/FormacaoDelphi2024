@@ -1,0 +1,49 @@
+object frmmGenerateUnit: TfrmmGenerateUnit
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 320
+  Caption = 'Generate Unit'
+  OnShow = UnimFormShow
+  TitleFontColor = 9264680
+  CloseButton.IconCls = 'arrow_left'
+  CloseButton.DefaultIcon = False
+  TitleButtons = <>
+  ShowAnimation = 'slideOut'
+  PixelsPerInch = 96
+  TextHeight = 15
+  ScrollPosition = 0
+  ScrollHeight = 47
+  PlatformData = {}
+  object memSyntax: TUnimMemo
+    Left = 0
+    Top = 0
+    Width = 320
+    Height = 413
+    Hint = ''
+    Align = alClient
+    TabOrder = 0
+  end
+  object btnGenerate: TUnimButton
+    AlignWithMargins = True
+    Left = 15
+    Top = 423
+    Width = 290
+    Height = 47
+    Hint = ''
+    Margins.Left = 15
+    Margins.Top = 10
+    Margins.Right = 15
+    Margins.Bottom = 10
+    Align = alBottom
+    Caption = 'Download'
+    UI = 'round'
+    ScreenMask.Enabled = True
+    ScreenMask.WaitData = True
+    ScreenMask.Message = 'Processing...'
+    LayoutConfig.Cls = 'button-style'
+    OnClick = btnGenerateClick
+    ExplicitLeft = 20
+    ExplicitTop = 402
+  end
+end

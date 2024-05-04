@@ -1,0 +1,7 @@
+unit uHttp.Bytes;
+
+interface
+
+implementation
+
+end.

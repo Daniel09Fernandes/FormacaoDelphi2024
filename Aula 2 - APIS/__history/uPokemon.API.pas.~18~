@@ -1,0 +1,79 @@
+unit uPokemon.API;
+
+interface
+uses uPokemon.Model, Rest.Client, REST.Json, sysUtils, StrUtils,
+  System.Classes, REST.Types;
+type
+  TPokemonApi = class
+    private
+      const URL_POKEMON_API =  'https://pokeapi.co/api/v2/pokemon/';
+    public
+     class procedure BuscarFotos(const AUrlFoto:string; AImage: TStream);
+     class function CapturarPokemon(const ANomePokemon:string): TPokemon;
+  end;
+
+const NAO_USAR_VARIAVEIS_GOLBAIS = '';
+
+implementation
+
+{ TPokemonApi }
+uses WinApi.WinInet;
+
+class procedure TPokemonApi.BuscarFotos(const AUrlFoto: string; AImage: TStream);
+const
+  BUFFER_SIZE = 1024*1024;
+var
+  lBuffer,
+  lHiNet,
+  lUrlOpen : Pointer;
+  lBytesReaded: Cardinal;
+begin
+
+  lHiNet := InternetOpen('',INTERNET_OPEN_TYPE_PRECONFIG, NIL, NIL, 0);
+
+  if Assigned(lHiNet) then
+  try
+    AImage.Position := 0;
+    GetMem(lBuffer,BUFFER_SIZE);
+    try
+      lUrlOpen := InternetOpenUrl(lHiNet, PChar(AUrlFoto), nil, 0, INTERNET_FLAG_RELOAD,0);
+      if Assigned(lUrlOpen) then
+      begin
+        repeat
+          InternetReadFile(lUrlOpen, lBuffer, BUFFER_SIZE, lBytesReaded);
+          if lBytesReaded > 0 then
+            AImage.write(lBuffer^, lBytesReaded);
+        until (lBytesReaded = 0);
+      end;
+    finally
+      FreeMem(lBuffer);
+    end;
+  finally
+    InternetCloseHandle(lHiNet);
+  end;
+end;
+
+class function TPokemonApi.CapturarPokemon( const ANomePokemon: string): TPokemon;
+begin
+   if ANomePokemon.Trim.IsEmpty then
+     raise Exception.Create('Informar um pokemon para consulta!');
+
+   var LRest := TRESTClient.Create(URL_POKEMON_API + ANomePokemon);
+   var LReq  := TRESTRequest.Create(LRest);
+   try
+      LRest.Accept := '*/*';
+      LRest.ContentType := 'application/json';
+
+      LReq.Client := LRest;
+      LReq.Method := rmGET;
+
+      LReq.Execute;
+
+      Result := TJson.JsonToObject<TPokemon>(LReq.Response.JSONText);
+   finally
+      LReq.Free;
+      LRest.Free;
+   end;
+end;
+
+end.

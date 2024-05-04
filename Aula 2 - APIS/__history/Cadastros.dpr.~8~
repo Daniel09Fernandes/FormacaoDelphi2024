@@ -1,0 +1,21 @@
+program Cadastros;
+
+uses
+  Vcl.Forms,
+  uCadastro.View in 'uCadastro.View.pas' {frHome},
+  uPokemon.View in 'uPokemon.View.pas' {frPokemon},
+  uPokemon.Model in 'uPokemon.Model.pas',
+  uPokemon.API in 'uPokemon.API.pas',
+  Vcl.Themes,
+  Vcl.Styles,
+  uTema.conf in 'uTema.conf.pas',
+  uHttp.Bytes in 'uHttp.Bytes.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrHome, frHome);
+  Application.Run;
+end.

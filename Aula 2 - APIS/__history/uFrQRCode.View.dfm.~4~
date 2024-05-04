@@ -1,0 +1,28 @@
+object frQrCode: TfrQrCode
+  Left = 0
+  Top = 0
+  Caption = 'Gerador QrCode'
+  ClientHeight = 441
+  ClientWidth = 624
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Roboto'
+  Font.Style = []
+  TextHeight = 14
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 624
+    Height = 41
+    Align = alTop
+    Caption = 'Gerador de QRCodes'
+    Color = 16053318
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitLeft = 288
+    ExplicitTop = 112
+    ExplicitWidth = 185
+  end
+end

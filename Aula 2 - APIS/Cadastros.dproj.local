@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/05/04 09:16:20.000.424,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/05/04 09:19:04.000.213,C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uCadastro.View.pas</Transaction>
+    <Transaction>2024/05/04 09:19:04.000.213,C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.dfm=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uCadastro.View.dfm</Transaction>
+    <Transaction>2024/05/04 09:19:14.000.781,C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Project2.dproj=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Cadastros.dproj</Transaction>
+    <Transaction>2024/05/04 10:39:49.000.405,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 10:40:03.000.143,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.dfm=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uPokemon.View.dfm</Transaction>
+    <Transaction>2024/05/04 10:40:03.000.143,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uPokemon.View.pas</Transaction>
+    <Transaction>2024/05/04 11:17:58.000.148,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 11:54:21.000.908,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uPokemon.Model.pas</Transaction>
+    <Transaction>2024/05/04 13:22:55.000.426,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 13:23:07.000.093,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uPokemon.API.pas</Transaction>
+    <Transaction>2024/05/04 15:29:24.000.365,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 15:29:38.000.980,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uTema.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 15:30:12.000.645,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uTema.Config=</Transaction>
+    <Transaction>2024/05/04 15:30:38.000.656,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 15:30:51.000.620,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uTema.conf.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 16:19:45.168,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 16:20:58.162,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uHttp.Bytes.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 16:45:18.232,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 16:45:34.987,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrQRCode.View.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 16:45:34.987,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrQRCode.View.dfm=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.dfm</Transaction>
+    <Transaction>2024/05/04 16:51:43.862,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 16:51:57.244,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uQRCode.Api.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 17:15:20.220,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 17:15:40.265,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uPaises.Model.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 17:19:15.132,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 17:19:22.691,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uPaises.Api.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 17:25:30.460,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 17:30:51.745,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrPaises.dfm=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.dfm</Transaction>
+    <Transaction>2024/05/04 17:30:51.745,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrPaises.pas=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\Unit1.pas</Transaction>
+    <Transaction>2024/05/04 17:30:59.568,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrPaises.Viw=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrPaises.Viw</Transaction>
+    <Transaction>2024/05/04 17:30:59.568,D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrPaises.dfm=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrPaises.dfm</Transaction>
+    <Transaction>2024/05/04 17:32:18.460,=D:\Fontes\FormaçãoDelphi2024-git\Aula 2\uFrPaises.View.pas</Transaction>
+  </Transactions>
+</BorlandProject>

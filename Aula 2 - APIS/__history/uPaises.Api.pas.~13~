@@ -1,0 +1,45 @@
+unit uPaises.Api;
+
+interface
+uses uPaises.Model, Rest.Client, REST.Json, sysUtils, StrUtils,
+  System.Classes, REST.Types;
+  type
+    TPaisApi = class
+      private
+        const URL_PAISES = 'https://restcountries.com/v3.1/alpha/';
+      public
+        class function BuscarPais(ASigla: string):TPais;
+        class procedure PegarImgBandeira(AUrl:string; AImg:TStream);
+    end;
+
+implementation
+
+{ TPaisApi }
+uses uHttp.Bytes;
+
+class function TPaisApi.BuscarPais(ASigla: string): TPais;
+begin
+    var LRest := TRESTClient.Create(URL_PAISES + ASigla);
+   var LReq  := TRESTRequest.Create(LRest);
+   try
+      LRest.Accept := '*/*';
+      LRest.ContentType := 'application/json';
+
+      LReq.Client := LRest;
+      LReq.Method := rmGET;
+
+      LReq.Execute;
+
+      Result := TJson.JsonToObject<TPais>( '{ "Items":  ' LReq.Response.JSonValue.ToString + '}' );
+   finally
+      LReq.Free;
+      LRest.Free;
+   end;
+end;
+
+class procedure TPaisApi.PegarImgBandeira(AUrl: string; AImg: TStream);
+begin
+   THttpBytes.GetBytes(AUrl, AImg);
+end;
+
+end.
