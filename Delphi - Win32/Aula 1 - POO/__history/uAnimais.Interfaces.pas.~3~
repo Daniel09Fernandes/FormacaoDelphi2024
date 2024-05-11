@@ -1,0 +1,14 @@
+unit uAnimais.Interfaces;
+
+interface
+Type
+  IAnimal = interface
+    ['{A1646D63-421C-401F-973D-C44062902430}']
+
+    procedure Alimentar;
+    procedure Mover;
+  end;
+
+implementation
+
+end.

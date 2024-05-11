@@ -1,0 +1,12 @@
+unit uLeal.Classes;
+
+interface
+
+type
+  TLeao = Class
+
+  End;
+
+implementation
+
+end.

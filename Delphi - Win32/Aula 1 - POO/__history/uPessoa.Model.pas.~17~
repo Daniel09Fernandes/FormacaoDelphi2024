@@ -1,0 +1,57 @@
+unit uPessoa.Model;
+
+interface
+  uses strUtils, sysUtils;
+
+type
+  TPessoa = class
+    protected
+      FNome: string;
+      FAltura : double;
+    Strict private
+      function getNome: string;
+      procedure SetNome(const Value: string);
+    public
+      Property Nome: string read getNome write SetNome;
+  end;
+
+  TPessoaFisicaAmiga = class
+    private
+      Pessoa: TPessoa;
+    public
+       constructor Create;
+  end;
+
+
+
+
+implementation
+
+{ TPessoa }
+{$Region 'Classe TPessoa'  }
+function TPessoa.getNome: string;
+begin
+  Result := 'Olá meu nome é: ' +FNome;
+end;
+
+procedure TPessoa.SetNome(const Value: string);
+begin
+   if Value.Trim.IsEmpty then
+     raise Exception.Create('Informar um nome valido');
+
+   FNome :=  Value;
+end;
+
+{$endRegion}
+
+{ TPessoaFisica }
+
+constructor TPessoaFisicaAmiga.Create;
+begin
+  inherited;
+   Pessoa := TPessoa.Create;
+
+   var Nome := Pessoa.FNome;
+end;
+
+end.

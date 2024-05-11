@@ -1,0 +1,48 @@
+unit uAnimal.Classes;
+
+interface
+uses uAnimais.Interfaces;
+
+  type
+    TCachorro = class(TInterfacedObject, IAnimal)
+
+    procedure Alimentar;
+    procedure Mover;
+    function  Reproduzir: string;
+    procedure Dormir;
+    procedure SetTipo(ATipo: EnumTipo);
+
+    end;
+
+
+implementation
+
+{ TCachorro }
+uses uMessage.padrao;
+
+procedure TCachorro.Alimentar;
+begin
+  TMessage.ShowMessage('Cachorro Alimentado');
+end;
+
+procedure TCachorro.Dormir;
+begin
+
+end;
+
+procedure TCachorro.Mover;
+begin
+
+end;
+
+function TCachorro.Reproduzir: string;
+begin
+
+end;
+
+procedure TCachorro.SetTipo(ATipo: EnumTipo);
+begin
+
+end;
+
+end.

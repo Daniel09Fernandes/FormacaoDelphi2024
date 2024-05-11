@@ -1,0 +1,53 @@
+unit uAnimal.Classes;
+
+interface
+uses uAnimais.Interfaces;
+  type
+    ITeste = interface
+      ['{06995619-569E-43FE-A505-FEE03B5CD777}']
+    end;
+
+    TCachorro = class(TInterfacedObject,  ITeste)
+    private
+      FTipo: EnumTipo;
+    public
+      procedure Alimentar;
+      procedure Mover;
+      function  Reproduzir: string;
+      procedure Dormir;
+      procedure SetTipo(ATipo: EnumTipo);
+
+    end;
+
+
+implementation
+
+{ TCachorro }
+uses uMessage.padrao, StrUtils, sysUtils;
+
+procedure TCachorro.Alimentar;
+begin
+  TMessage.ShowMessage('Cachorro Alimentado');
+end;
+
+procedure TCachorro.Dormir;
+begin
+  TMessage.ShowMessage('Cachorro Dormindo');
+end;
+
+procedure TCachorro.Mover;
+begin
+  TMessage.ShowMessage('Cachorro Correndo atras de moto');
+end;
+
+function TCachorro.Reproduzir: string;
+begin
+  Result := 'O Cachorro acabou de ter '+ Random(5).toString+ ' filhotes';
+end;
+
+procedure TCachorro.SetTipo(ATipo: EnumTipo);
+begin
+   FTipo := ATipo;
+end;
+
+end.

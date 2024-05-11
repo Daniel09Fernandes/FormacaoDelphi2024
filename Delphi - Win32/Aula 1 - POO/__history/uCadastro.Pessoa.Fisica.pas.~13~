@@ -1,0 +1,38 @@
+unit uCadastro.Pessoa.Fisica;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastro.Padrao.Form, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,  uPessoa.Fisica.Model,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.ExtCtrls, uPessoa.Model, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TFrCadastroPessoaFisica = class(TFrCadastroPadaro)
+    MemDadosNome: TStringField;
+    MemDadosCpf: TStringField;
+    MemDadosAltura: TFloatField;
+    DBEdit1: TDBEdit;
+    Label1: TLabel;
+    DBEdit2: TDBEdit;
+    Label2: TLabel;
+    DBEdit3: TDBEdit;
+    Label3: TLabel;
+  private
+  public
+    function GerarObjetoLinha: TPessoaFisica; override;
+  end;
+
+var
+  FrCadastroPessoaFisica: TFrCadastroPessoaFisica;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrCadastroPadaro1 }
+
+end.

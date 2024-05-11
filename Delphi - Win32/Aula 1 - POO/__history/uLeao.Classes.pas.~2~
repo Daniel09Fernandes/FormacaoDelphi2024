@@ -1,0 +1,13 @@
+unit uLeao.Classes;
+
+interface
+uses uAnimais.Interfaces;
+
+type
+  TLeao = Class
+
+  End;
+
+implementation
+
+end.
