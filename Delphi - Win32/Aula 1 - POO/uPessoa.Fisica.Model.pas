@@ -27,13 +27,17 @@ type
 
   public
     Property CNPJ : String read getCnpj Write setCnpj;
+
+    constructor Create(); override;
+    destructor Destroy; override;
+
   end;
 
 
 implementation
 
 { TPessoaFisica }
-uses System.MaskUtils, System.SysUtils, Math;
+uses System.MaskUtils, System.SysUtils, Math, Vcl.Dialogs;
 
 constructor TPessoaFisica.Create;
 begin
@@ -66,6 +70,19 @@ end;
 
 { TPessoaJuridica }
 
+constructor TPessoaJuridica.Create();
+begin
+  inherited; // Executa a pai primeiro
+  //Depois executa aqui na filha
+  ShowMessage('Eu sou a classe filha');
+end;
+
+destructor TPessoaJuridica.Destroy;
+begin
+   //Destroi primeiro os objetos da classe filha
+  inherited; // Depois destroi os objetos da pai
+end;
+
 function TPessoaJuridica.getCnpj: String;
 begin
   Result := FormatMaskText('00\.000\.000\/0000\-00;0;', FCnpj);
@@ -77,7 +94,7 @@ begin
  var lng := IfThen(Value.Contains('.'), 18 ,14);
 
    if Length(Value) <> lng then
-     raise Exception.Create('Cpf invalido');
+     raise Exception.Create('CNPJ invalido');
 
    FCnpj := Value;
 end;

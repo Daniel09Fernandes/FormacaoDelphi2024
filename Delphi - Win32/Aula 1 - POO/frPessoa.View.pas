@@ -62,7 +62,15 @@ begin
   mDados.Lines.Add('Pessoa 2 = Valor Objeto:'+sLineBreak+ Pessoa2.Nome);
   mDados.Lines.Add('Pessoa 2 = Instancia:'+sLineBreak+ Format('$%p', [@Pessoa2]));
 
-  Pessoa1.Free;
+  //AVC
+  //Pessoa1.Free;
+  FreeAndNil(Pessoa1);
+
+  if Assigned(Pessoa1) then
+    Pessoa1.Nome;
+
+   FreeAndNil(Pessoa1);
+
   Pessoa2.Free;
 end;
 
@@ -74,6 +82,7 @@ begin
    Pessoa :=  TPessoa.Create;
    PessoaFisica := TPessoaFisica.Create;
 //   var cpf := TPessoaFisica(Pessoa).Cpf;
+    var PessoaJuridica := TPessoaJuridica.Create;
 
    Pessoa.Nome := 'Daniel';
 

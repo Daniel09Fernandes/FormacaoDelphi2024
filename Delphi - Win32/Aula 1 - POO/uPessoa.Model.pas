@@ -1,7 +1,7 @@
 unit uPessoa.Model;
 
 interface
-  uses strUtils, sysUtils;
+  uses strUtils, sysUtils, Vcl.Dialogs;
 
 type
   TPessoa = class
@@ -13,6 +13,7 @@ type
       procedure SetNome(const Value: string);
     public
       Property Nome: string read getNome write SetNome;
+      constructor Create();  virtual;
   end;
 
   TPessoaFisicaAmiga = class
@@ -26,6 +27,11 @@ implementation
 
 { TPessoa }
 {$Region 'Classe TPessoa'  }
+constructor TPessoa.Create;
+begin
+   ShowMessage('Eu sou a classe pai');
+end;
+
 function TPessoa.getNome: string;
 begin
   Result := 'Olá meu nome é: ' +FNome;

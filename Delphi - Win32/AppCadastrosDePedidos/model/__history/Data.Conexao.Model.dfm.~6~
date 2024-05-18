@@ -1,0 +1,13 @@
+object DnConexao: TDnConexao
+  Height = 117
+  Width = 225
+  object FDConn: TFDConnection
+    Params.Strings = (
+      
+        'Database=D:\Fontes\Forma'#231#227'oDelphi2024-git\Delphi - Win32\AppCada' +
+        'strosDePedidos\assets\db\AppDb.db'
+      'DriverID=SQLite')
+    Left = 96
+    Top = 24
+  end
+end

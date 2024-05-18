@@ -1,0 +1,15 @@
+program AppCadPedidos;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Base.Form.View in '..\..\view\FormBase\Base.Form.View.pas' {FrBase},
+  Login.Form.View in '..\..\view\Login.Form.View.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

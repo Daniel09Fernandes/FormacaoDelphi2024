@@ -1,0 +1,39 @@
+unit Data.Login.Controller;
+
+interface
+type
+  TLoginController = class
+  private
+     procedure GravarSessao(const ACodUsuario: integer; const AUsuario:String);
+  public
+    Function ValidarLogin(AUsuario, ASenha: string):boolean;
+  end;
+
+implementation
+
+uses Data.Conexao.Model,  Data.Login.Model;
+
+{ TLoginController }
+
+procedure TLoginController.GravarSessao(const ACodUsuario: integer; const AUsuario:String);
+begin
+  var Usuario : TUsuarioLogado;
+  Usuario.CodUsuario   :=  ACodUsuario;
+  Usuario.NomeUsuario  := AUsuario;
+
+  DmConexao.UsuarioLogado := Usuario;
+end;
+
+function TLoginController.ValidarLogin(AUsuario, ASenha: string): boolean;
+begin
+  var LoginModel := TDMLogin.Create(nil);
+  try
+     Result := LoginModel.ValidarLogin(AUsuario, ASenha);
+     GravarSessao(LoginModel.FDQLoginCodUsuario.AsInteger, LoginModel.FDQLoginNomeUsuario.AsString);
+
+  finally
+
+  end;
+end;
+
+end.

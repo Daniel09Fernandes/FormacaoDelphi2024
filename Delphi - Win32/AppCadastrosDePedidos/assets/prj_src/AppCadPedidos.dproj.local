@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/05/16 21:31:19.000.226,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/05/18 00:28:51.000.412,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/05/18 13:12:53.000.862,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/05/18 13:14:25.000.630,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\view\Base.Form.View.pas=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/05/18 13:14:25.000.630,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\view\Base.Form.View.fmx=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.fmx</Transaction>
+    <Transaction>2024/05/18 13:14:40.000.642,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\AppCadPedidos.dproj=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2024/05/18 13:29:12.000.335,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\view\Base.Form.View.pas=</Transaction>
+    <Transaction>2024/05/18 13:29:42.000.905,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\view\FormBase\Base.Form.View.pas</Transaction>
+    <Transaction>2024/05/18 13:29:58.000.428,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 13:31:24.000.596,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\view\Login.Form.View.fmx=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.fmx</Transaction>
+    <Transaction>2024/05/18 13:31:24.000.596,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\view\Login.Form.View.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 13:48:27.000.274,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 13:49:19.000.684,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\model\Data.Conexao.Model.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 13:49:19.000.684,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\model\Data.Conexao.Model.dfm=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.dfm</Transaction>
+    <Transaction>2024/05/18 13:52:38.000.547,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 13:53:25.000.700,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\model\Data.Login.Model.dfm=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.dfm</Transaction>
+    <Transaction>2024/05/18 13:53:25.000.699,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\model\Data.Login.Model.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 14:14:48.000.604,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 14:15:21.000.180,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\controller\Data.Login.Controller.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\AppCadastrosDePedidos\assets\prj_src\Unit1.pas</Transaction>
+    <Transaction>2024/05/18 17:26:22.272,=D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\bordbk290.dll</Transaction>
+    <Transaction>2024/05/18 17:26:22.367,=D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\bordbk290N.dll</Transaction>
+    <Transaction>2024/05/18 17:26:22.471,=D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\brcide.dll</Transaction>
+    <Transaction>2024/05/18 17:26:22.560,=D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\comp32x.dll</Transaction>
+    <Transaction>2024/05/18 17:26:22.712,=D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\dcc32290.dll</Transaction>
+    <Transaction>2024/05/18 17:26:22.942,=D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\rmtdbg290.exe</Transaction>
+  </Transactions>
+</BorlandProject>

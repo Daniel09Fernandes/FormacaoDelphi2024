@@ -1,0 +1,70 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 474
+  ClientWidth = 648
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Align = MostBottom
+    Position.Y = 440.000000000000000000
+    Size.Width = 648.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Rectangle1: TRectangle
+      Align = Client
+      Fill.Color = claWhite
+      Size.Width = 648.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object Label1: TLabel
+        Align = Left
+        StyledSettings = [Family, Size, Style]
+        Size.Width = 137.000000000000000000
+        Size.Height = 34.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = xFF222222
+        TextSettings.Trimming = None
+        Text = '   Vers'#227'o 1.0.0      |'
+        TabOrder = 2
+      end
+      object Label2: TLabel
+        Align = Left
+        StyledSettings = [Family, Size, Style]
+        Position.X = 137.000000000000000000
+        Size.Width = 353.000000000000000000
+        Size.Height = 34.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = xFF222222
+        TextSettings.Trimming = None
+        Text = 'Suporte:    www.suporte.sistema.com           |'
+        TabOrder = 1
+      end
+      object Label3: TLabel
+        Align = Right
+        StyledSettings = [Family, Size, Style]
+        Position.X = 568.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 34.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = xFF222222
+        TextSettings.Trimming = None
+        Text = 'Aquasoft'
+        TabOrder = 0
+      end
+    end
+  end
+  object Main: TRectangle
+    Align = Client
+    Fill.Color = xFF90E5CD
+    Size.Width = 648.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+  end
+end
