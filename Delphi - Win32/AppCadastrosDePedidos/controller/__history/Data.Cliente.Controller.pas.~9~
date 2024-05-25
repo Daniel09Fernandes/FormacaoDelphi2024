@@ -1,0 +1,31 @@
+unit Data.Cliente.Controller;
+
+interface
+Uses
+  Data.Conexao.Model, Data.Cliente.Model, Data.Cliente.Entity;
+
+  type
+    TClienteController = class
+      private
+         var FModelCLiente : TDmClienteModel;
+      public
+        Function BuscarCliente(): TList<TClienteEntity>;
+        constructor Create(AOwner: TComponent); override;
+    end;
+
+implementation
+
+{ TClienteController }
+
+class function TClienteController.BuscarCliente: TList<TClienteEntity>;
+begin
+    Result :=  FModelCLiente.BuscarClientes;
+    FModelCLiente.Free;
+end;
+
+constructor TClienteController.Create();
+begin
+  FModelCLiente :=  TDmClienteModel.Create(nil);
+end;
+
+end.

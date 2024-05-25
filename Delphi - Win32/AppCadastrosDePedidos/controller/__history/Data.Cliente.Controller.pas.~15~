@@ -1,0 +1,48 @@
+unit Data.Cliente.Controller;
+
+interface
+Uses
+  Data.Conexao.Model, Data.Cliente.Model, Data.Cliente.Entity,
+  system.Generics.Collections;
+
+  type
+    TClienteController = class
+      private
+         var FModelCLiente : TDmClienteModel;
+      public
+        procedure GetTelaCliente;
+        Function BuscarCliente(): TList<TClienteEntity>;
+        constructor Create();
+        destructor Destroy; override;
+
+    end;
+
+implementation
+
+uses
+  System.SysUtils, Clientes.Cadastros.Form.View;
+
+{ TClienteController }
+
+function TClienteController.BuscarCliente: TList<TClienteEntity>;
+begin
+  Result :=  FModelCLiente.BuscarClientes;
+end;
+
+constructor TClienteController.Create();
+begin
+  FModelCLiente :=  TDmClienteModel.Create(nil);
+end;
+
+destructor TClienteController.Destroy;
+begin
+  FreeAndNil(FModelCLiente);
+  inherited;
+end;
+
+procedure TClienteController.GetTelaCliente;
+begin
+
+end;
+
+end.

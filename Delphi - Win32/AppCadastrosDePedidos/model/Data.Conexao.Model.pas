@@ -17,7 +17,7 @@ type
   end;
 
 
-  TDmConexao = class(TDataModule)
+  TDmConexaoModel = class(TDataModule)
     FDConn: TFDConnection;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     procedure DataModuleDestroy(Sender: TObject);
@@ -30,7 +30,7 @@ type
   end;
 
 var
-  DmConexao: TDmConexao;
+  DmConexaoModel: TDmConexaoModel;
 
 implementation
 
@@ -38,12 +38,12 @@ implementation
 
 {$R *.dfm}
 
-procedure TDmConexao.DataModuleDestroy(Sender: TObject);
+procedure TDmConexaoModel.DataModuleDestroy(Sender: TObject);
 begin
-   DmConexao.FDConn.Connected := false;
+   DmConexaoModel.FDConn.Connected := false;
 end;
 
-function TDmConexao.getConexao: TFDConnection;
+function TDmConexaoModel.getConexao: TFDConnection;
 begin
   Result := FDConn;
 end;

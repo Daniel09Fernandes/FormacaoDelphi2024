@@ -9,7 +9,7 @@ uses
   FMX.ImgList;
 
 type
-  TFrLogin = class(TForm)
+  TFrLoginView = class(TForm)
     Main: TRectangle;
     Rectangle1: TRectangle;
     Rectangle2: TRectangle;
@@ -23,6 +23,7 @@ type
     ImageList1: TImageList;
     procedure CornerButton2Click(Sender: TObject);
     procedure CornerButton1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     procedure RealizarLogin;
   public
@@ -30,29 +31,35 @@ type
   end;
 
 var
-  FrLogin: TFrLogin;
+  FrLoginView: TFrLoginView;
 
 implementation
 
 {$R *.fmx}
 uses Data.Login.Controller;
 
-procedure TFrLogin.CornerButton1Click(Sender: TObject);
+procedure TFrLoginView.CornerButton1Click(Sender: TObject);
 begin
   RealizarLogin;
 end;
 
-procedure TFrLogin.CornerButton2Click(Sender: TObject);
+procedure TFrLoginView.CornerButton2Click(Sender: TObject);
 begin
   Application.Terminate;
 end;
 
-procedure TFrLogin.RealizarLogin;
+procedure TFrLoginView.FormShow(Sender: TObject);
+begin
+  if edtUsuario.CanFocus then
+    edtUsuario.SetFocus;
+end;
+
+procedure TFrLoginView.RealizarLogin;
 begin
   if TLoginController.ValidarLogin(edtUsuario.Text, edtSenha.Text) then
-    ShowMessage('Login realizado com sucesso')
+    close
   else
-    ShowMessage('Usuario ou senha invalidos!');
+    ShowMessage('Usuário ou senha invalidos!');
 
 end;
 

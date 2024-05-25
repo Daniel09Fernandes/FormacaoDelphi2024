@@ -312,20 +312,39 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="..\..\view\Login.Form.View.pas">
-            <Form>FrLogin</Form>
+            <Form>FrLoginView</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="..\..\model\Data.Conexao.Model.pas">
-            <Form>DmConexao</Form>
+            <Form>DmConexaoModel</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\..\model\Data.Login.Model.pas">
-            <Form>DMLogin</Form>
+            <Form>DMLoginModel</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\..\controller\Data.Login.Controller.pas"/>
+        <DCCReference Include="..\..\view\Principal.Form.View.pas">
+            <Form>FrPrincipalView</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\..\model\Data.Cliente.Model.pas">
+            <Form>DmClienteModel</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\..\controller\Data.Cliente.Controller.pas"/>
+        <DCCReference Include="..\..\DTO\Data.Cliente.Entity.pas"/>
+        <DCCReference Include="..\..\view\FormBase\Base.Cadastro.Form.View.pas">
+            <Form>FrBaseCadastros</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\..\view\Clientes.Cadastros.Form.View.pas">
+            <Form>FrBaseCadastros1</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <RcItem Include="D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\bordbk290.dll">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

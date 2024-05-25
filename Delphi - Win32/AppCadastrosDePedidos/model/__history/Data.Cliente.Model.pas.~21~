@@ -1,0 +1,89 @@
+unit Data.Cliente.Model;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Data.Cliente.Entity, System.Generics.Collections;
+
+type
+  TDataModule1 = class(TDataModule)
+    FDQCadastroUsuario: TFDQuery;
+    procedure FDQCadastroUsuarioBeforeOpen(DataSet: TDataSet);
+    procedure FDQCadastroUsuarioAfterOpen(DataSet: TDataSet);
+  private
+    FListaCliente : TList<TClienteEntity>;
+    procedure ParseQueryToObjt(var AObtCliente : TClienteEntity);
+  public
+    function BuscarClientes: TList<TClienteEntity>;
+    constructor Create(AOwner: TComponent); override;
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TDataModule1 }
+
+function TDataModule1.BuscarClientes: TList<TClienteEntity>;
+begin
+  FListaCliente := TList<TClienteEntity>.Create;
+  try
+    FDQCadastroUsuario.Open;
+
+    FDQCadastroUsuario.First;
+    while not FDQCadastroUsuario.Eof do
+    begin
+      var Cliente := TClienteEntity.Create;
+      try
+       FListaCliente.Add(Cliente);
+      finally
+        Cliente.Free;
+      end;
+
+      FDQCadastroUsuario.Next;
+    end;
+
+  finally
+
+  end;
+end;
+
+constructor TDataModule1.Create(AOwner: TComponent);
+begin
+  inherited;
+
+  If AOwner is TFDConnection then
+    FDQCadastroUsuario.Connection := TFDConnection(AOwner);
+end;
+
+procedure TDataModule1.FDQCadastroUsuarioAfterOpen(DataSet: TDataSet);
+begin
+  FDQCadastroUsuario.Connection.Connected := false;
+end;
+
+procedure TDataModule1.FDQCadastroUsuarioBeforeOpen(DataSet: TDataSet);
+begin
+   if not FDQCadastroUsuario.Connection.Connected then
+     FDQCadastroUsuario.Connection.Connected := true;
+end;
+
+procedure TDataModule1.ParseQueryToObjt(var AObtCliente: TClienteEntity);
+begin
+   if not Assigned(AObtCliente) then
+     raise Exception.Create('Objeto Cliente não instanciado!');
+
+  AObtCliente.IdCliente    := FDQCadastroUsuario.FieldByName('ID_CLIENTE').AsInteger;
+  AObtCliente.NomeCliente  := FDQCadastroUsuario.FieldByName('NOME_CLIENTE').AsString;
+  AObtCliente.Endereco     := FDQCadastroUsuario.FieldByName('ENDERECO').AsString;
+  AObtCliente.DataCadastro := FDQCadastroUsuario.FieldByName('DTA_CADASTRO').AsDateTime;
+end;
+
+end.

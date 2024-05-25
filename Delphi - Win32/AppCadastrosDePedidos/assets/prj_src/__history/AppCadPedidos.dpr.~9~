@@ -1,0 +1,23 @@
+program AppCadPedidos;
+
+{$R *.dres}
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Base.Form.View in '..\..\view\FormBase\Base.Form.View.pas' {FrBase},
+  Login.Form.View in '..\..\view\Login.Form.View.pas' {FrLoginView},
+  Data.Conexao.Model in '..\..\model\Data.Conexao.Model.pas' {DmConexaoModel: TDataModule},
+  Data.Login.Model in '..\..\model\Data.Login.Model.pas' {DMLoginModel: TDataModule},
+  Data.Login.Controller in '..\..\controller\Data.Login.Controller.pas',
+  Principal.Form.View in '..\..\view\Principal.Form.View.pas' {FrPrincipalView};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFrLoginView, FrLoginView);
+  Application.CreateForm(TDmConexaoModel, DmConexaoModel);
+  Application.CreateForm(TFrPrincipalView, FrPrincipalView);
+  Application.Run;
+end.

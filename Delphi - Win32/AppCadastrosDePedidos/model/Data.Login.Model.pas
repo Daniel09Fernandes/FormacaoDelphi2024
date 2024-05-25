@@ -9,7 +9,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TDMLogin = class(TDataModule)
+  TDMLoginModel = class(TDataModule)
     FDQLogin: TFDQuery;
     FDQLoginCodUsuario: TIntegerField;
     FDQLoginNomeUsuario: TWideStringField;
@@ -29,7 +29,7 @@ type
   end;
 
 var
-  DMLogin: TDMLogin;
+  DMLoginModel: TDMLoginModel;
 
 implementation
 
@@ -37,25 +37,25 @@ implementation
 
 {$R *.dfm}
 
-constructor TDMLogin.Create(AOwner: TComponent);
+constructor TDMLoginModel.Create(AOwner: TComponent);
 begin
   inherited;
   if AOwner is TFDConnection then
     FDQLogin.Connection :=  TFDConnection(AOwner);
 end;
 
-procedure TDMLogin.FDQLoginAfterClose(DataSet: TDataSet);
+procedure TDMLoginModel.FDQLoginAfterClose(DataSet: TDataSet);
 begin
   FDQLogin.Connection.Connected := false;
 end;
 
-procedure TDMLogin.FDQLoginBeforeOpen(DataSet: TDataSet);
+procedure TDMLoginModel.FDQLoginBeforeOpen(DataSet: TDataSet);
 begin
   if not FDQLogin.Connection.Connected then
     FDQLogin.Connection.Connected := true;
 end;
 
-function TDMLogin.ValidarLogin(AUsuario, ASenha: string): Boolean;
+function TDMLoginModel.ValidarLogin(AUsuario, ASenha: string): Boolean;
 begin
   FDQLogin.ParamByName('Usuario').AsString := AUsuario;
   FDQLogin.ParamByName('Senha').AsString   := ASenha;
