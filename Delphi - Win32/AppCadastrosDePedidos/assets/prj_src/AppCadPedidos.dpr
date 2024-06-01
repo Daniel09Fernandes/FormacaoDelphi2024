@@ -15,7 +15,12 @@ uses
   Data.Cliente.Controller in '..\..\controller\Data.Cliente.Controller.pas',
   Data.Cliente.Entity in '..\..\DTO\Data.Cliente.Entity.pas',
   Base.Cadastro.Form.View in '..\..\view\FormBase\Base.Cadastro.Form.View.pas' {FrBaseCadastros},
-  Clientes.Cadastros.Form.View in '..\..\view\Clientes.Cadastros.Form.View.pas' {FrBaseCadastros1};
+  Clientes.Cadastros.Form.View in '..\..\view\Clientes.Cadastros.Form.View.pas' {FrBaseCadastros1},
+  Produto.Cadastros.Form.View in '..\..\view\Produto.Cadastros.Form.View.pas' {FrCadastroProduto},
+  Data.Produto.Model in '..\..\model\Data.Produto.Model.pas' {dmProdutoModel: TDataModule},
+  Data.Produto.Entity in '..\..\DTO\Data.Produto.Entity.pas',
+  Data.Produto.Controller in '..\..\controller\Data.Produto.Controller.pas',
+  Principal.Controller in '..\..\controller\Principal.Controller.pas';
 
 {$R *.res}
 

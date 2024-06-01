@@ -1,0 +1,165 @@
+inherited FrCadastroClientes: TFrCadastroClientes
+  Caption = 'FrBaseCadastros1'
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    inherited Rectangle1: TRectangle
+      inherited BtnEdit: TImage
+        MultiResBitmap.Height = 83
+        MultiResBitmap.Width = 73
+      end
+      inherited BtnInsert: TImage
+        MultiResBitmap.Height = 71
+        MultiResBitmap.Width = 61
+      end
+      inherited Image5: TImage
+        MultiResBitmap.Height = 126
+        MultiResBitmap.Width = 200
+      end
+      inherited Image6: TImage
+        MultiResBitmap.Height = 120
+        MultiResBitmap.Width = 194
+      end
+      inherited Image7: TImage
+        MultiResBitmap.Height = 79
+        MultiResBitmap.Width = 66
+        inherited Image8: TImage
+          MultiResBitmap.Height = 138
+          MultiResBitmap.Width = 180
+          inherited Image9: TImage
+            MultiResBitmap.Height = 126
+            MultiResBitmap.Width = 210
+          end
+        end
+      end
+      inherited BtnSave: TImage
+        MultiResBitmap.Height = 512
+        MultiResBitmap.Width = 512
+      end
+      inherited BtnCancel: TImage
+        MultiResBitmap.Height = 79
+        MultiResBitmap.Width = 66
+      end
+    end
+  end
+  inherited TCPadrao: TTabControl
+    TabIndex = 1
+    Sizes = (
+      757s
+      389s
+      757s
+      389s)
+    inherited TbResultado: TTabItem
+      IsSelected = False
+      ExplicitSize.cx = 73.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited SgDados: TStringGrid
+        Viewport.Width = 757.000000000000000000
+        Viewport.Height = 389.000000000000000000
+        object clIdCliente: TIntegerColumn
+          Header = 'Id Cliente'
+          HeaderSettings.TextSettings.WordWrap = False
+          Size.Width = 72.000000000000000000
+        end
+        object clNomeCliente: TStringColumn
+          Header = 'Nome Cliente'
+          HeaderSettings.TextSettings.WordWrap = False
+          Size.Width = 352.000000000000000000
+        end
+        object clEndereco: TStringColumn
+          Header = 'Endere'#231'o'
+          HeaderSettings.TextSettings.WordWrap = False
+          Size.Width = 307.000000000000000000
+        end
+        object ClDtaCadastro: TStringColumn
+          Header = 'Data Cadastro'
+          HeaderSettings.TextSettings.WordWrap = False
+          Size.Width = 89.000000000000000000
+        end
+      end
+    end
+    inherited TbCadastro: TTabItem
+      IsSelected = True
+      ExplicitSize.cx = 68.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object EdtId: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 5
+        Position.X = 42.000000000000000000
+        Position.Y = 70.000000000000000000
+        Enabled = False
+        Size.Width = 32.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object EdtName: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 2
+        Position.X = 90.000000000000000000
+        Position.Y = 70.000000000000000000
+        Enabled = False
+        Size.Width = 351.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object edtEndereco: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 0
+        Position.X = 42.000000000000000000
+        Position.Y = 118.000000000000000000
+        Enabled = False
+        Size.Width = 399.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object DEdtCadastro: TDateEdit
+        Date = 45437.000000000000000000
+        Enabled = False
+        Position.X = 42.000000000000000000
+        Position.Y = 166.000000000000000000
+        TabOrder = 3
+      end
+      object Label1: TLabel
+        Position.X = 42.000000000000000000
+        Position.Y = 54.000000000000000000
+        Size.Width = 26.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'ID'
+        TabOrder = 8
+      end
+      object Label2: TLabel
+        Position.X = 90.000000000000000000
+        Position.Y = 54.000000000000000000
+        Size.Width = 52.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Nome'
+        TabOrder = 7
+      end
+      object Label3: TLabel
+        Position.X = 42.000000000000000000
+        Position.Y = 100.000000000000000000
+        Size.Width = 52.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Ender'#231'o'
+        TabOrder = 6
+      end
+      object lblcad: TLabel
+        Position.X = 42.000000000000000000
+        Position.Y = 148.000000000000000000
+        Size.Width = 100.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Data do cadastro'
+        TabOrder = 4
+      end
+    end
+  end
+end

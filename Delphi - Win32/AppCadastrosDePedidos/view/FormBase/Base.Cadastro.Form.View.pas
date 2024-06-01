@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl, System.Rtti,
   FMX.Grid.Style, FMX.ScrollBox, FMX.Grid, FMX.Objects, System.ImageList,
-  FMX.ImgList;
+  FMX.ImgList, FMX.Edit, FMX.DateTimeCtrls;
 
 type
   TFrBaseCadastros = class(TForm)
@@ -41,6 +41,8 @@ type
     procedure SgDadosCellDblClick(const Column: TColumn; const Row: Integer);
   protected
      FLimparComponenete: Boolean;
+     procedure AtualizaRowCount(AValor:Integer);
+     procedure ControleVisualCadastro(AValue: Boolean);
   private
     FRowAtual : integer;
     procedure MoverTabCadastro;
@@ -55,6 +57,27 @@ var
 implementation
 
 {$R *.fmx}
+
+procedure TFrBaseCadastros.ControleVisualCadastro(AValue: Boolean);
+begin
+    for var I := 0 to ComponentCount-1 do
+  begin
+    if Components[i] is TEdit then
+    begin
+      TEdit(Components[i]).Enabled := AValue;
+      if  FLimparComponenete then
+        TEdit(Components[i]).Text := '';
+    end;
+
+   if Components[i] is TDateEdit then
+   begin
+    TDateEdit(Components[i]).Enabled := AValue;
+
+    if  FLimparComponenete then
+        TDateEdit(Components[i]).Date := now;
+   end;
+  end;
+end;
 
 procedure TFrBaseCadastros.ControlesVisuais(AValue: Boolean);
 begin
@@ -82,7 +105,7 @@ end;
 
 procedure TFrBaseCadastros.BtnInsertClick(Sender: TObject);
 begin
-  FLimparComponenete := false;
+  FLimparComponenete := True;
   ControlesVisuais(False);
   MoverTabCadastro;
 end;
@@ -91,6 +114,11 @@ procedure TFrBaseCadastros.BtnSaveClick(Sender: TObject);
 begin
   FLimparComponenete := false;
   ControlesVisuais(True);
+end;
+
+procedure TFrBaseCadastros.AtualizaRowCount(AValor: Integer);
+begin
+  SgDados.RowCount := AValor;
 end;
 
 procedure TFrBaseCadastros.BtnCancelClick(Sender: TObject);

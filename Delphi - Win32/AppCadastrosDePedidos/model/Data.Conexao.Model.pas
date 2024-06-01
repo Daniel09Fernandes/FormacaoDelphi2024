@@ -20,6 +20,7 @@ type
   TDmConexaoModel = class(TDataModule)
     FDConn: TFDConnection;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    FDTransaction1: TFDTransaction;
     procedure DataModuleDestroy(Sender: TObject);
   private
     FUsuarioLogado: TUsuarioLogado;

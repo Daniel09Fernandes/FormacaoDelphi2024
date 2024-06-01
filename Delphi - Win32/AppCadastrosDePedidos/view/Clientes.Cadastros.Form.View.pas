@@ -30,14 +30,11 @@ type
     procedure SgDadosCellDblClick(const Column: TColumn; const Row: Integer);
     procedure BtnSaveClick(Sender: TObject);
     procedure BtnCancelClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     ListaCliente : TList<TClienteEntity>;
     FControllerCliente : TClienteController;
-    FProcuraCliente : TClienteEntity;
-    FIndexReg : Integer;
     Procedure IniciarGrid;
-    procedure AtualizaRowCount(AValor: Integer);
-    procedure ControleVisualCadastro(AValue: Boolean);
     procedure EditarRegistro;
     procedure PopulaGrid;
   public
@@ -71,70 +68,22 @@ end;
 procedure TFrCadastroClientes.BtnSaveClick(Sender: TObject);
 begin
   inherited;
+  var Cliente := TClienteEntity.Create;
 
-  if FIndexReg > -1 then
-  begin
-     ListaCliente.Items[FIndexReg].IdCliente      := EdtId.Text.ToInteger;
-     ListaCliente.Items[FIndexReg].NomeCliente    := EdtName.Text;
-     ListaCliente.Items[FIndexReg].Endereco       := edtEndereco.Text;
-     ListaCliente.Items[FIndexReg].DataCadastro   := DEdtCadastro.Date;
-  end
-  else
-  begin
-    var Cliente := TClienteEntity.Create;
+  Cliente.IdCliente    := EdtId.Text.ToInteger;
+  Cliente.NomeCliente  := EdtName.Text;
+  Cliente.Endereco     := edtEndereco.Text;
+  Cliente.DataCadastro := DEdtCadastro.Date;
 
-    Cliente.IdCliente    := EdtId.Text.ToInteger;
-    Cliente.NomeCliente  := EdtName.Text;
-    Cliente.Endereco     := edtEndereco.Text;
-    Cliente.DataCadastro := DEdtCadastro.Date;
-
-    ListaCliente.Add (Cliente);
-  end;
-  FIndexReg := -1;
+  ListaCliente := FControllerCliente.GravarClientes(Cliente);
 
   ControleVisualCadastro(false);
   PopulaGrid;
 end;
 
-procedure TFrCadastroClientes.ControleVisualCadastro(AValue: Boolean);
-begin
-    for var I := 0 to ComponentCount-1 do
-  begin
-    if Components[i] is TEdit then
-    begin
-      TEdit(Components[i]).Enabled := AValue;
-      if  FLimparComponenete then
-        TEdit(Components[i]).Text := '';
-    end;
-
-   if Components[i] is TDateEdit then
-   begin
-    TDateEdit(Components[i]).Enabled := AValue;
-
-    if  FLimparComponenete then
-        TDateEdit(Components[i]).Date := now;
-   end;
-  end;
-end;
-
 procedure TFrCadastroClientes.EditarRegistro;
-procedure procurarRegistro;
-begin
-  for var I := 0 to ListaCliente.Count -1 do
-  begin
-    FIndexReg := -1;
-    if ListaCliente.Items[i].IdCliente = SgDados.Cells[clIdCliente.Index, SgDados.Row].ToInteger() then
-    begin
-      FIndexReg := I;
-      break;
-    end;
-  end;
-end;
-
 begin
   ControleVisualCadastro(true);
-  procurarRegistro;
-
   EdtId.Text        := SgDados.Cells[clIdCliente.Index, SgDados.Row];
   EdtName.Text      := SgDados.Cells[clNomeCliente.Index, SgDados.Row];
   edtEndereco.Text  := SgDados.Cells[clEndereco.Index, SgDados.Row];
@@ -142,29 +91,29 @@ begin
 end;
 
 
+procedure TFrCadastroClientes.FormCreate(Sender: TObject);
+begin
+  inherited;
+  FControllerCliente := TClienteController.Create;
+end;
+
 procedure TFrCadastroClientes.FormDestroy(Sender: TObject);
 begin
   inherited;
   if Assigned(FControllerCliente) then
     FreeAndNil(FControllerCliente);
-
-  FreeAndNil(FProcuraCliente);
 end;
 
 procedure TFrCadastroClientes.FormShow(Sender: TObject);
 begin
   inherited;
-   FIndexReg := -1;
   lblTitulo.Text := 'Cadastro de Clientes';
   IniciarGrid;
 end;
 
 procedure TFrCadastroClientes.IniciarGrid;
 begin
-  FControllerCliente := TClienteController.Create;
-  FProcuraCliente    := TClienteEntity.Create;
   ListaCliente       :=  FControllerCliente.BuscarCliente;
-  AtualizaRowCount(ListaCliente.Count);
   PopulaGrid;
 end;
 
@@ -195,12 +144,7 @@ end;
 procedure TFrCadastroClientes.SgDadosCellDblClick(const Column: TColumn; const Row: Integer);
 begin
   inherited;
-  EditarRegistro;
-end;
-
-procedure TFrCadastroClientes.AtualizaRowCount(AValor:Integer);
-begin
-  SgDados.RowCount := AValor;
+  BtnEditClick(nil);
 end;
 
 end.

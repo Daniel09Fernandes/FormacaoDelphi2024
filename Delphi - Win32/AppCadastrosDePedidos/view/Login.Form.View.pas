@@ -26,6 +26,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     procedure RealizarLogin;
+    function CriptografiaRP(Opcao, Dados: String): String;
   public
     { Public declarations }
   end;
@@ -36,7 +37,7 @@ var
 implementation
 
 {$R *.fmx}
-uses Data.Login.Controller;
+uses Data.Login.Controller, system.Hash;
 
 procedure TFrLoginView.CornerButton1Click(Sender: TObject);
 begin
@@ -56,11 +57,43 @@ end;
 
 procedure TFrLoginView.RealizarLogin;
 begin
+  //Supondo que aqui é o cadastro da senha
+  var hash := THashMD5.GetHashString(edtSenha.Text);
+  var str  := CriptografiaRP('C',edtSenha.Text +'&'+hash);
+
+  str := CriptografiaRP('D',edtSenha.Text +'&'+hash);
+
+  str  := Copy(str,0, pos(str,'&')-1);
+
   if TLoginController.ValidarLogin(edtUsuario.Text, edtSenha.Text) then
     close
   else
     ShowMessage('Usuário ou senha invalidos!');
+end;
 
+//Não pertece a view, é só um teste
+Function TFrLoginView.CriptografiaRP(Opcao : String; Dados : String): String;
+var
+  I : Integer;
+  Key : Cardinal;
+  Res : String;
+const
+  C1    = 44970; //33598
+  C2    = 31511; //24219
+  Chave = 18021; //16854
+begin
+  Key := Chave;
+
+  for I := 1 to length(Dados) do
+  begin
+    Res := Res + Char(Byte(Dados[I]) xor (Key shr 8));
+    if Opcao = 'C' then
+      Key := (Byte(Res[I]) + Chave) * C1 + C2;
+    if Opcao = 'D' then
+      Key := (Byte(Dados[I]) + Chave) * C1 + C2;
+  end;
+
+  Result := Res;
 end;
 
 end.

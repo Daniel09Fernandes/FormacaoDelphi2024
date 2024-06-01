@@ -10,6 +10,7 @@ object DmConexaoModel: TDmConexaoModel
       'DriverID=SQLite')
     Connected = True
     LoginPrompt = False
+    Transaction = FDTransaction1
     Left = 96
     Top = 24
   end
@@ -17,5 +18,10 @@ object DmConexaoModel: TDmConexaoModel
     Provider = 'FMX'
     Left = 168
     Top = 56
+  end
+  object FDTransaction1: TFDTransaction
+    Connection = FDConn
+    Left = 88
+    Top = 112
   end
 end

@@ -1,0 +1,16 @@
+program Threads;
+
+uses
+  Vcl.Forms,
+  uThread.Main in 'uThread.Main.pas' {FrThreads},
+  uThreadExcept in 'uThreadExcept.pas' {FrThreadsExcept};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+//  Application.CreateForm(TFrThreads, FrThreads);
+  Application.CreateForm(TFrThreadsExcept, FrThreadsExcept);
+  Application.Run;
+end.

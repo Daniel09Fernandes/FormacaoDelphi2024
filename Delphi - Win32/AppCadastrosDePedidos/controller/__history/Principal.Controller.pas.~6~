@@ -1,0 +1,30 @@
+unit Principal.Controller;
+
+interface
+uses
+  Data.Login.Controller, Data.Cliente.Controller;
+
+ type
+  TPrincipalController = class
+    private
+
+    public
+      class procedure AberTelaCliente;
+      class procedure AberTelaProduto;
+  end;
+
+implementation
+
+{ TPrincipalController }
+
+class procedure TPrincipalController.AberTelaCliente;
+begin
+  var ClienteController := TClienteController.Create;
+  try
+     ClienteController.GetTelaCliente(nil);
+  finally
+     ClienteController.Free;
+  end;
+end;
+
+end.

@@ -3,9 +3,18 @@
 	<Transactions>
     <Transaction>2024/05/16 21:31:19.000.226,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>2024/05/18 00:28:51.000.412,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2024/05/25 17:08:50.875,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2024/05/25 17:10:46.946,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uThread.Main.pas=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2024/05/25 17:10:46.946,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uThread.Main.dfm=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
-    <Transaction>2024/05/25 18:00:09.979,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Threads.dproj=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2024/05/25 17:08:50.000.875,=C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/05/25 17:10:46.000.946,C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uThread.Main.pas</Transaction>
+    <Transaction>2024/05/25 17:10:46.000.946,C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Unit2.dfm=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uThread.Main.dfm</Transaction>
+    <Transaction>2024/05/25 18:00:09.000.979,C:\Users\danie\OneDrive\Documents\Embarcadero\Studio\Projects\Project2.dproj=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Threads.dproj</Transaction>
+    <Transaction>2024/06/01 09:09:35.644,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.pas</Transaction>
+    <Transaction>2024/06/01 09:10:11.689,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uThreadExcept.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.pas</Transaction>
+    <Transaction>2024/06/01 09:10:11.689,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uThreadExcept.dfm=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.dfm</Transaction>
+    <Transaction>2024/06/01 10:11:48.132,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.pas</Transaction>
+    <Transaction>2024/06/01 10:12:01.545,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uCrticalSection.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.pas</Transaction>
+    <Transaction>2024/06/01 10:12:01.545,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uCrticalSection.dfm=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.dfm</Transaction>
+    <Transaction>2024/06/01 11:29:22.816,=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.pas</Transaction>
+    <Transaction>2024/06/01 11:29:31.701,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uTask.pas=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.pas</Transaction>
+    <Transaction>2024/06/01 11:29:31.701,D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\uTask.dfm=D:\Fontes\FormaçãoDelphi2024-git\Delphi - Win32\Threads\Unit1.dfm</Transaction>
   </Transactions>
 </BorlandProject>

@@ -1,0 +1,9 @@
+object dmProdutoModel: TdmProdutoModel
+  Height = 147
+  Width = 265
+  object FDQProdutos: TFDQuery
+    CachedUpdates = True
+    Left = 112
+    Top = 32
+  end
+end

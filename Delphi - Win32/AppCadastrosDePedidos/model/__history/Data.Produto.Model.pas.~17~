@@ -1,0 +1,113 @@
+unit Data.Produto.Model;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.Generics.Collections,  Data.Produto.Entity;
+
+type
+  TdmProdutoModel = class(TDataModule)
+    FDQProdutos: TFDQuery;
+    procedure FDQProdutosAfterClose(DataSet: TDataSet);
+    procedure FDQProdutosBeforeOpen(DataSet: TDataSet);
+  private
+    FListaProduto: TList<TProdutoEntity>;
+    procedure FecharConexao;
+    procedure ParseQueryToObjt(var AModel : TProdutoEntity);
+  public
+    function BuscarProdutos: TList<TProdutoEntity>;
+    function GravarProdutos(AModel: TProdutoEntity): TList<TProdutoEntity>;
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+  end;
+
+var
+  dmProdutoModel: TdmProdutoModel;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TdmProdutoModel }
+
+function TdmProdutoModel.BuscarProdutos: TList<TProdutoEntity>;
+begin
+  FListaProduto.Clear;
+  try
+    FDQProdutos.Open;
+
+    FDQProdutos.First;
+    while not FDQProdutos.Eof do
+    begin
+      var
+      Produto := TProdutoEntity.Create;
+      ParseQueryToObjt(Produto);
+      FListaProduto.Add(Produto);
+
+      FDQProdutos.Next;
+    end;
+    Result := FListaProduto;
+  finally
+    FDQProdutos.Close;
+  end;
+end;
+
+constructor TdmProdutoModel.Create(AOwner: TComponent);
+begin
+  inherited;
+  if not Assigned(FListaProduto) then
+    FListaProduto := TList<TProdutoEntity>.Create;
+
+  If AOwner is TFDConnection then
+  begin
+    FDQProdutos.Connection := TFDConnection(AOwner);
+    FDQProdutos.Transaction := TFDConnection(AOwner).Transaction;
+  end;
+end;
+
+destructor TdmProdutoModel.Destroy;
+begin
+  FreeAndNil(FListaProduto);
+
+  FecharConexao;
+  inherited;
+end;
+
+procedure TdmProdutoModel.FDQProdutosAfterClose(DataSet: TDataSet);
+begin
+  FecharConexao;
+end;
+
+procedure TdmProdutoModel.FDQProdutosBeforeOpen(DataSet: TDataSet);
+begin
+   if not FDQProdutos.Connection.Connected then
+    FDQProdutos.Connection.Connected := True;
+end;
+
+procedure TdmProdutoModel.FecharConexao;
+begin
+  FDQProdutos.Connection.Connected := false;
+end;
+
+function TdmProdutoModel.GravarProdutos(AModel: TProdutoEntity): TList<TProdutoEntity>;
+begin
+
+end;
+
+procedure TdmProdutoModel.ParseQueryToObjt(var AModel: TProdutoEntity);
+begin
+    if not Assigned(AModel) then
+    raise Exception.Create('Objeto Cliente não instanciado!');
+
+  AModel.IdProduto   := FDQProdutos.FieldByName('ID_PRODUTO').AsInteger;
+  AModel.NomeProduto := FDQProdutos.FieldByName('NOME_PRODUTO').AsString;
+  AModel.Preco       := FDQProdutos.FieldByName('PRECO').Asfloat;
+  AModel.Estoque     := FDQProdutos.FieldByName('ESTOQUE').asInteger;
+end;
+
+end.

@@ -10,7 +10,7 @@ uses
 type
   TMathOperation = reference to function(a,b :integer):integer;
 
-  TForm2 = class(TForm)
+  TFrThreads = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
     Splitter1: TSplitter;
@@ -32,13 +32,13 @@ type
   end;
 
 var
-  Form2: TForm2;
+  FrThreads: TFrThreads;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm2.Button1Click(Sender: TObject);
+procedure TFrThreads.Button1Click(Sender: TObject);
 const MAX_VAL = 500;
 function GetProc(gauge : TGauge; rotina:TProc):TProc;
 begin
@@ -130,7 +130,7 @@ begin
 
 end;
 
-procedure TForm2.Button2Click(Sender: TObject);
+procedure TFrThreads.Button2Click(Sender: TObject);
  function ExecutaOperacao(a, b:integer; operation: TMathOperation):integer;
  begin
    Result := operation(a,b);
@@ -171,7 +171,7 @@ begin
 
 end;
 
-procedure TForm2.ExecutaAlgoPorParametro(rotina: TProc);
+procedure TFrThreads.ExecutaAlgoPorParametro(rotina: TProc);
 begin
   rotina;
 end;

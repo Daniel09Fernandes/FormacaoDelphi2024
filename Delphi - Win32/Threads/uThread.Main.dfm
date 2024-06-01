@@ -1,7 +1,7 @@
-object Form2: TForm2
+object FrThreads: TFrThreads
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'FrThreads'
   ClientHeight = 441
   ClientWidth = 624
   Color = clBtnFace
@@ -26,9 +26,6 @@ object Form2: TForm2
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 176
-    ExplicitTop = 72
-    ExplicitWidth = 185
     object Button1: TButton
       Left = 8
       Top = 10
@@ -128,7 +125,5 @@ object Form2: TForm2
     Height = 400
     Align = alClient
     TabOrder = 2
-    ExplicitLeft = 408
-    ExplicitWidth = 216
   end
 end

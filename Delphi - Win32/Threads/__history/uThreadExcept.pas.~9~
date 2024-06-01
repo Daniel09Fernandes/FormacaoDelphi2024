@@ -1,0 +1,54 @@
+unit uThreadExcept;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, system.Generics.Collections;
+
+type
+  TFrThreadsExcept = class(TForm)
+    Button1: TButton;
+    Memo1: TMemo;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    FListaErrosThread: TDictionary<string, integer>;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrThreadsExcept: TFrThreadsExcept;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrThreadsExcept.Button1Click(Sender: TObject);
+begin
+  var S := 'r';
+  try
+    strToInt(s);
+  except
+    On E: Exception do
+    begin
+      ShowMessage('Erro ' + sLineBreak +E.Message);
+    end;
+  end;
+end;
+
+procedure TFrThreadsExcept.FormCreate(Sender: TObject);
+begin
+  TThread.NameThreadForDebugging('Main');
+  FListaErrosThread := TDictionary<string, integer>.Create;
+end;
+
+procedure TFrThreadsExcept.FormDestroy(Sender: TObject);
+begin
+  FreeAndNil(FListaErrosThread);
+end;
+
+end.

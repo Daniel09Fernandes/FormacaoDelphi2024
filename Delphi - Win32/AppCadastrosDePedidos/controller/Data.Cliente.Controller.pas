@@ -12,9 +12,9 @@ Uses
       public
         procedure GetTelaCliente(AOwner: TComponent);
         Function BuscarCliente(): TList<TClienteEntity>;
+        Function GravarClientes(AModel: TClienteEntity): TList<TClienteEntity>;
         constructor Create();
         destructor Destroy; override;
-
     end;
 
 implementation
@@ -48,6 +48,11 @@ begin
   finally
     FrCliente.Free;
   end;
+end;
+
+function TClienteController.GravarClientes(AModel: TClienteEntity): TList<TClienteEntity>;
+begin
+  Result := FModelCLiente.GravarClientes(AModel);
 end;
 
 end.

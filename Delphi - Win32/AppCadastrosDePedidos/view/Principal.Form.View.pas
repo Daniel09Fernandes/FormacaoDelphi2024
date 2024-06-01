@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  Base.Form.View, FMX.Objects, FMX.Controls.Presentation, FMX.Menus;
+  Base.Form.View, FMX.Objects, FMX.Controls.Presentation, FMX.Menus,
+  Winapi.Windows;
 
 type
   TFrPrincipalView = class(TFrBase)
@@ -21,6 +22,9 @@ type
     procedure miCadastrosClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure MenuItem5Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
+    procedure MenuItem2Click(Sender: TObject);
+    procedure MenuItem3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,24 +37,38 @@ var
 implementation
 
 {$R *.fmx}
-uses
-  Data.Login.Controller, Data.Cliente.Controller;
+ uses Principal.Controller;
+
+procedure TFrPrincipalView.MenuItem2Click(Sender: TObject);
+begin
+  inherited;
+  TPrincipalController.AberTelaProduto;
+end;
+
+procedure TFrPrincipalView.MenuItem3Click(Sender: TObject);
+begin
+  inherited;
+  TPrincipalController.AberTelaCliente;
+end;
+
+procedure TFrPrincipalView.MenuItem4Click(Sender: TObject);
+begin
+  inherited;
+  TPrincipalController.AberTelaProduto;
+end;
 
 procedure TFrPrincipalView.MenuItem5Click(Sender: TObject);
 begin
   inherited;
-  var ClienteController := TClienteController.Create;
-  try
-     ClienteController.GetTelaCliente(self);
-  finally
-     ClienteController.Free;
-  end;
+  TPrincipalController.AberTelaCliente;
 end;
 
 procedure TFrPrincipalView.miCadastrosClick(Sender: TObject);
 begin
   inherited;
-    pmCadastros.Popup(miCadastros.Position.x+10, miCadastros.Position.y+100);
+    var mouse : TPoint;
+    GetCursorPos(mouse);
+    pmCadastros.Popup(mouse.x, mouse.y);
 end;
 
 procedure TFrPrincipalView.Timer1Timer(Sender: TObject);
@@ -58,7 +76,7 @@ begin
   inherited;
   Timer1.Enabled := false;
   {$ifdef Release}
-    TLoginController.GetTelaLogin(self);
+    TPrincipalController.AbreTelaLogin;
   {$ENDIF}
 end;
 
