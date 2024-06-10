@@ -1,0 +1,54 @@
+program prjRTTI;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  TypInfo,
+  RTTI;
+
+Type
+    TMyAtrribute = class(TCustomAttribute)
+      private
+       FValue: string;
+      public
+       constructor Create(const value: string);
+       property Value: String read FValue;
+    end;
+
+   [TMyAtrribute('Ola Mundo')]
+   TMyClass = class
+
+   end;
+
+{ TMyAtrribute }
+
+constructor TMyAtrribute.Create(const value: string);
+begin
+  inherited create;
+  FValue := value;
+end;
+
+begin
+  try
+    var RttiContext : TRttiContext;
+    var RttiType: TRttiType;
+    var Attribute : TCustomAttribute;
+
+    RttiContext := TRttiContext.Create;
+    try
+      RttiType := RttiContext.GetType(TMyClass);
+
+      for Attribute in RttiType.GetAttributes do
+
+    finally
+      RttiContext.Free;
+    end;
+
+  except
+    on E: Exception do
+      Writeln(E.ClassName, ': ', E.Message);
+  end;
+end.

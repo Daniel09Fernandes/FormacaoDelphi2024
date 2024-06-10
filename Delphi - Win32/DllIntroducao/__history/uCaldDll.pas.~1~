@@ -1,0 +1,19 @@
+unit uCaldDll;
+
+interface
+
+  Type
+    TCalc = class
+      Class function Multiplicacao (a,b: integer): integer;
+    end;
+
+implementation
+
+{ TCalc }
+
+class function TCalc.Multiplicacao(a, b: integer): integer;
+begin
+  Result := a * b;
+end;
+
+end.

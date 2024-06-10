@@ -1,0 +1,26 @@
+unit Zip.Helper;
+
+interface
+uses  System.Zip;
+ type
+
+  TIminhaString = String;
+
+  THelperString = record helper for TIminhaString
+     Function GetMYName: string;
+  end;
+
+  TZipHelper = class helper for TzipFile
+
+  end;
+
+implementation
+
+{ THelperString }
+
+function THelperString.GetMYName: string;
+begin
+  Resul := 'Daniel';
+end;
+
+end.

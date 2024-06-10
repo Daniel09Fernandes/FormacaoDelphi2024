@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{31FB7F3D-3DBE-455D-A306-E3384EB6C6EF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="prjDllCalc.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="prjSoma.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="prjDllCalc">
+        <MSBuild Projects="prjDllCalc.dproj"/>
+    </Target>
+    <Target Name="prjDllCalc:Clean">
+        <MSBuild Projects="prjDllCalc.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="prjDllCalc:Make">
+        <MSBuild Projects="prjDllCalc.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="prjSoma">
+        <MSBuild Projects="prjSoma.dproj"/>
+    </Target>
+    <Target Name="prjSoma:Clean">
+        <MSBuild Projects="prjSoma.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="prjSoma:Make">
+        <MSBuild Projects="prjSoma.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="prjDllCalc;prjSoma"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="prjDllCalc:Clean;prjSoma:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="prjDllCalc:Make;prjSoma:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

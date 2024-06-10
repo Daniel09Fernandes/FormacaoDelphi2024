@@ -1,0 +1,145 @@
+unit Pedidos.Form.View;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  Base.Cadastro.Form.View, System.Rtti, FMX.Grid.Style, FMX.ScrollBox, FMX.Grid,
+  FMX.TabControl, FMX.Objects, FMX.Controls.Presentation, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, FireDAC.Stan.StorageBin, Fmx.Bind.Grid,
+  System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Controls,
+  Data.Bind.EngExt, Fmx.Bind.DBEngExt, Data.Bind.Components, FMX.Layouts,
+  Fmx.Bind.Navigator, Data.Bind.Grid, Data.Bind.DBScope, FMX.Edit,
+  Data.Pedidos.Controller,
+  base.Pesquisa.Controller;
+
+type
+  TfrPedidos = class(TFrBaseCadastros)
+    gdPedidos: TGrid;
+    Rectangle3: TRectangle;
+    Label1: TLabel;
+    Rectangle4: TRectangle;
+    Label2: TLabel;
+    gdItensPedidos: TGrid;
+    MemPedidos: TFDMemTable;
+    MemItensPedidos: TFDMemTable;
+    MemPedidosIdPedido: TIntegerField;
+    MemPedidosNomeCliente: TStringField;
+    MemPedidosTotalPedido: TFloatField;
+    MemPedidosIdCliente: TIntegerField;
+    MemItensPedidosIdItem: TIntegerField;
+    MemItensPedidosNomeProduto: TStringField;
+    MemItensPedidosIdProduto: TIntegerField;
+    MemItensPedidosIdPedido: TIntegerField;
+    MemItensPedidosPreco: TFloatField;
+    BindingsList1: TBindingsList;
+    dsPedidos: TDataSource;
+    dsItensPedidos: TDataSource;
+    BindSourceDB1: TBindSourceDB;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    BindNavigator1: TBindNavigator;
+    BindSourceDB2: TBindSourceDB;
+    LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource;
+    NavigatorBindSourceDB2: TBindNavigator;
+    Rectangle5: TRectangle;
+    Rectangle6: TRectangle;
+    Rectangle7: TRectangle;
+    Rectangle8: TRectangle;
+    Rectangle9: TRectangle;
+    Label3: TLabel;
+    Rectangle10: TRectangle;
+    Label4: TLabel;
+    EdtIdPed: TEdit;
+    EdtCliente: TEdit;
+    EdtPedTot: TEdit;
+    EdtIdItem: TEdit;
+    EdtProd: TEdit;
+    EdtPreco: TEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    LinkControlToFieldIdPedido: TLinkControlToField;
+    LinkControlToFieldNomeCliente: TLinkControlToField;
+    LinkControlToFieldTotalPedido: TLinkControlToField;
+    LinkControlToFieldIdItem: TLinkControlToField;
+    LinkControlToFieldPreco: TLinkControlToField;
+    LinkControlToFieldNomeProduto: TLinkControlToField;
+    CornerButton3: TCornerButton;
+    CornerButton1: TCornerButton;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure CornerButton3Click(Sender: TObject);
+    procedure CornerButton1Click(Sender: TObject);
+  private
+    FController : TPedidosController;
+  public
+    { Public declarations }
+  end;
+
+var
+  frPedidos: TfrPedidos;
+
+implementation
+
+{$R *.fmx}
+
+procedure TfrPedidos.CornerButton1Click(Sender: TObject);
+begin
+  inherited;
+  var Fr := TPesquisaController.GetTelaPesquisa(self);
+  try
+     var ListaProduto := FController.BuscarProduto;
+
+     for var I := 0 to ListaProduto.Count -1 do
+     begin
+        fr.StringGrid1.Cells[fr.ClCod.Index,i]  := ListaProduto.Items[I].IdProduto.ToString;
+        fr.StringGrid1.Cells[fr.clDesc.Index,i] := ListaProduto.Items[I].NomeProduto;
+     end;
+     Fr.ShowModal;
+
+     EdtProd.Text  := fr.Selecao.Descricao;
+     EdtPreco.Text := ListaProduto.Items[fr.Selecao.IDX].Preco.ToString;
+  finally
+     Fr.Free
+  end;
+end;
+
+procedure TfrPedidos.CornerButton3Click(Sender: TObject);
+begin
+  inherited;
+  var Fr := TPesquisaController.GetTelaPesquisa(self);
+  try
+     var ListaCliente := FController.BuscarCliente;
+
+     for var I := 0 to ListaCliente.Count -1 do
+     begin
+        fr.StringGrid1.Cells[fr.ClCod.Index,i]  := ListaCliente.Items[I].IdCliente.ToString;
+        fr.StringGrid1.Cells[fr.clDesc.Index,i] := ListaCliente.Items[I].NomeCLiente;
+     end;
+     Fr.ShowModal;
+
+     EdtCliente.Text := fr.Selecao.Descricao;
+  finally
+     Fr.Free
+  end;
+end;
+
+procedure TfrPedidos.FormCreate(Sender: TObject);
+begin
+  inherited;
+  FController := TPedidosController.Create;
+end;
+
+procedure TfrPedidos.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(FController);
+end;
+
+end.

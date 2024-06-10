@@ -1,0 +1,65 @@
+unit Data.Pedidos.Controller;
+
+interface
+uses
+  Data.Pedidos.Entity,
+  Data.Pedidos.Model,
+  Data.Conexao.Model;
+
+type
+   TPedidosController = class
+     private
+       FModel : TdmPedidoModel;
+     public
+      function BuscarPedidos: TList<TPedidoEntity>;
+      function GravarPedidos(AModel: TPedidoEntity): TList<TPedidoEntity>;
+      function BuscarItensPedidos: TList<TItemPedidoEntity>;
+      function GravarItensPedidos(AModel: TItemPedidoEntity): TList<TItemPedidoEntity>;
+
+      constructor Create(AOwner: TComponent); override;
+      class procedure AbrirTelaPedidos;
+   end;
+
+implementation
+uses Pedidos.Form.View;
+
+{ TPedidosController }
+
+class procedure TPedidosController.AbrirTelaPedidos;
+begin
+  var frPedidos :=TfrPedidos.Create(nil);
+  try
+    frPedidos.ShowModal;
+  finally
+    frPedidos.Free;
+  end;
+end;
+
+function TPedidosController.BuscarItensPedidos: TList<TItemPedidoEntity>;
+begin
+
+end;
+
+function TPedidosController.BuscarPedidos: TList<TPedidoEntity>;
+begin
+
+end;
+
+constructor TPedidosController.Create();
+begin
+   FModel  := TdmPedidoModel.Create(DmConexaoModel.Conexao)
+end;
+
+function TPedidosController.GravarItensPedidos(
+  AModel: TItemPedidoEntity): TList<TItemPedidoEntity>;
+begin
+
+end;
+
+function TPedidosController.GravarPedidos(
+  AModel: TPedidoEntity): TList<TPedidoEntity>;
+begin
+
+end;
+
+end.

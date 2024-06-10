@@ -1,0 +1,39 @@
+unit Zip.Helper;
+
+interface
+uses  System.Zip, System.Classes;
+ type
+
+  TIminhaString = String;
+
+  THelperString = record helper for TIminhaString
+     Function GetMYName: string;
+  end;
+
+  TZipHelper = class helper for TzipFile
+    class procedure Zippar(ArquivoSaida: string; ListaArquivos: TStrings);
+    class procedure DesZippar(Dir: string);
+  end;
+
+implementation
+
+{ THelperString }
+
+function THelperString.GetMYName: string;
+begin
+  Result := 'Daniel';
+end;
+
+{ TZipHelper }
+
+class procedure TZipHelper.DesZippar(Dir: string);
+begin
+
+end;
+
+class procedure TZipHelper.Zippar(ArquivoSaida: string; ListaArquivos: TStrings);
+begin
+
+end;
+
+end.

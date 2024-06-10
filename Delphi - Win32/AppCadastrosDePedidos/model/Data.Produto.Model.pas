@@ -136,7 +136,7 @@ end;
 
 procedure TdmProdutoModel.ParseQueryToObjt(var AModel: TProdutoEntity);
 begin
-    if not Assigned(AModel) then
+  if not Assigned(AModel) then
     raise Exception.Create('Objeto Cliente não instanciado!');
 
   AModel.IdProduto   := FDQProdutos.FieldByName('ID_PRODUTO').AsInteger;

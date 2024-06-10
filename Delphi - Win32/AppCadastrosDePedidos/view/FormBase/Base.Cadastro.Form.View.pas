@@ -22,7 +22,6 @@ type
     BtnCancel: TImage;
     Image5: TImage;
     Image6: TImage;
-    Image7: TImage;
     Image8: TImage;
     Image9: TImage;
     SgDados: TStringGrid;

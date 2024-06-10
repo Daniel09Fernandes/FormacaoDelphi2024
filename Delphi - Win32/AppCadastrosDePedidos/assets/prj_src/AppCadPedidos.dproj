@@ -263,6 +263,17 @@
         <DCCReference Include="..\..\DTO\Data.Produto.Entity.pas"/>
         <DCCReference Include="..\..\controller\Data.Produto.Controller.pas"/>
         <DCCReference Include="..\..\controller\Principal.Controller.pas"/>
+        <DCCReference Include="..\..\view\Pedidos.Form.View.pas">
+            <Form>frPedidos</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\..\controller\Data.Pedidos.Controller.pas"/>
+        <DCCReference Include="..\..\model\Data.Pedidos.Model.pas">
+            <Form>DataModule1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\..\DTO\Data.Pedidos.Entity.pas"/>
         <RcItem Include="D:\Program Files (x86)\Embarcadero\Studio\23.0\bin\bordbk290.dll">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

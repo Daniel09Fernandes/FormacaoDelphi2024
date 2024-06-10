@@ -2,7 +2,10 @@ unit Principal.Controller;
 
 interface
 uses
-  Data.Login.Controller, Data.Cliente.Controller, Data.Produto.Controller;
+  Data.Login.Controller,
+  Data.Cliente.Controller,
+  Data.Produto.Controller,
+  Data.Pedidos.Controller;
 
  type
   TPrincipalController = class
@@ -12,6 +15,7 @@ uses
       class procedure AberTelaCliente;
       class procedure AberTelaProduto;
       class procedure AbreTelaLogin;
+      class procedure AbrirTelaPedidos;
   end;
 
 implementation
@@ -41,6 +45,11 @@ end;
 class procedure TPrincipalController.AbreTelaLogin;
 begin
   TLoginController.GetTelaLogin(nil);
+end;
+
+class procedure TPrincipalController.AbrirTelaPedidos;
+begin
+  TPedidosController.AbrirTelaPedidos;
 end;
 
 end.

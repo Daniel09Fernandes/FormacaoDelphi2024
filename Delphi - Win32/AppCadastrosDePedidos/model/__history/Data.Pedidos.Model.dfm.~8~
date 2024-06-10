@@ -1,0 +1,50 @@
+object DataModule1: TDataModule1
+  Height = 272
+  Width = 347
+  object FDItemPedido: TFDQuery
+    CachedUpdates = True
+    Connection = DmConexaoModel.FDConn
+    UpdateObject = UdpItemPedido
+    SQL.Strings = (
+      '             '
+      'select '
+      ' ip.ID_PRODUTO,'
+      ' ip.ID_ITEM,'
+      ' ip.ID_PEDIDO,'
+      ' p.NOME_PRODUTO,'
+      ' p. preco'
+      'from'
+      '   itens_pedido ip'
+      'inner join produtos p '
+      '    on (p.ID_PRODUTO = ip.ID_PRODUTO)')
+    Left = 72
+    Top = 48
+  end
+  object FDPedidoCapa: TFDQuery
+    CachedUpdates = True
+    Connection = DmConexaoModel.FDConn
+    UpdateObject = udpPedidoCapa
+    SQL.Strings = (
+      '  SELECT'
+      '    PED.ID_PEDIDO,'
+      '    PED.ID_CLIENTE,'
+      '    CL.NOME_CLIENTE,'
+      '    PED.TOTAL_PEDIDO'
+      '  FROM'
+      '    PEDIDOS PED'
+      '  INNER JOIN'
+      '    CLIENTE CL ON (CL.ID_CLIENTE = PED.ID_CLIENTE)  ')
+    Left = 168
+    Top = 48
+  end
+  object UdpItemPedido: TFDUpdateSQL
+    Connection = DmConexaoModel.FDConn
+    Left = 72
+    Top = 112
+  end
+  object udpPedidoCapa: TFDUpdateSQL
+    Connection = DmConexaoModel.FDConn
+    Left = 176
+    Top = 112
+  end
+end

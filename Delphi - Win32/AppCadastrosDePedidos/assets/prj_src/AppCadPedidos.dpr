@@ -20,7 +20,11 @@ uses
   Data.Produto.Model in '..\..\model\Data.Produto.Model.pas' {dmProdutoModel: TDataModule},
   Data.Produto.Entity in '..\..\DTO\Data.Produto.Entity.pas',
   Data.Produto.Controller in '..\..\controller\Data.Produto.Controller.pas',
-  Principal.Controller in '..\..\controller\Principal.Controller.pas';
+  Principal.Controller in '..\..\controller\Principal.Controller.pas',
+  Pedidos.Form.View in '..\..\view\Pedidos.Form.View.pas' {frPedidos},
+  Data.Pedidos.Controller in '..\..\controller\Data.Pedidos.Controller.pas',
+  Data.Pedidos.Model in '..\..\model\Data.Pedidos.Model.pas' {DataModule1: TDataModule},
+  Data.Pedidos.Entity in '..\..\DTO\Data.Pedidos.Entity.pas';
 
 {$R *.res}
 

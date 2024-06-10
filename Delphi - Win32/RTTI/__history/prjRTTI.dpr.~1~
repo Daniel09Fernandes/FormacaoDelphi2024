@@ -1,0 +1,36 @@
+program prjRTTI;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  TypInfo,
+  RTTI;
+
+Type
+    TMyAtrribute = class(TCustomAttribute)
+      private
+       FValue: string;
+      public
+       constructor Create(const value: string);
+       property Value: String read FValue;
+    end;
+
+{ TMyAtrribute }
+
+constructor TMyAtrribute.Create(const value: string);
+begin
+  inherited create;
+  FValue := value;
+end;
+
+begin
+  try
+    { TODO -oUser -cConsole Main : Insert code here }
+  except
+    on E: Exception do
+      Writeln(E.ClassName, ': ', E.Message);
+  end;
+end.

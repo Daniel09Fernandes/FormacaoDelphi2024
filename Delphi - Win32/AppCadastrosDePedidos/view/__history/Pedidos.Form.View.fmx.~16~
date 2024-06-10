@@ -1,0 +1,616 @@
+inherited frPedidos: TfrPedidos
+  Caption = 'Pedidos'
+  ClientHeight = 545
+  ClientWidth = 907
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    Size.Width = 907.000000000000000000
+    inherited Rectangle1: TRectangle
+      Size.Width = 907.000000000000000000
+      inherited BtnEdit: TImage
+        MultiResBitmap.Height = 83
+        MultiResBitmap.Width = 73
+      end
+      inherited BtnInsert: TImage
+        MultiResBitmap.Height = 71
+        MultiResBitmap.Width = 61
+      end
+      inherited Image5: TImage
+        MultiResBitmap.Height = 126
+        MultiResBitmap.Width = 200
+      end
+      inherited Image6: TImage
+        MultiResBitmap.Height = 120
+        MultiResBitmap.Width = 194
+      end
+      inherited BtnSave: TImage
+        MultiResBitmap.Height = 512
+        MultiResBitmap.Width = 512
+      end
+      inherited BtnCancel: TImage
+        MultiResBitmap.Height = 79
+        MultiResBitmap.Width = 66
+      end
+      inherited Image8: TImage
+        MultiResBitmap.Height = 138
+        MultiResBitmap.Width = 180
+        inherited Image9: TImage
+          MultiResBitmap.Height = 126
+          MultiResBitmap.Width = 210
+          Position.Y = -1.000000000000000000
+        end
+      end
+    end
+  end
+  inherited TCPadrao: TTabControl
+    Size.Width = 907.000000000000000000
+    Size.Height = 480.000000000000000000
+    Sizes = (
+      907s
+      454s
+      907s
+      454s)
+    inherited TbResultado: TTabItem
+      ExplicitSize.cx = 73.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited SgDados: TStringGrid
+        Visible = False
+        Viewport.Width = 757.000000000000000000
+        Viewport.Height = 389.000000000000000000
+      end
+      object gdPedidos: TGrid
+        Align = MostTop
+        CanFocus = True
+        ClipChildren = True
+        Position.Y = 33.000000000000000000
+        Size.Width = 907.000000000000000000
+        Size.Height = 171.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        RowCount = 2
+        Viewport.Width = 903.000000000000000000
+        Viewport.Height = 130.000000000000000000
+      end
+      object Rectangle3: TRectangle
+        Align = MostTop
+        Fill.Color = xFF38AA8E
+        Size.Width = 907.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object Label1: TLabel
+          Align = MostLeft
+          StyledSettings = [Family, Style]
+          Size.Width = 170.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 15.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          Text = '  Cabe'#231'alho do pedido'
+          TabOrder = 0
+        end
+      end
+      object Rectangle4: TRectangle
+        Align = MostTop
+        Fill.Color = xFF38AA8E
+        Position.Y = 204.000000000000000000
+        Size.Width = 907.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object Label2: TLabel
+          Align = MostLeft
+          StyledSettings = [Family, Style]
+          Size.Width = 170.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 15.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.Trimming = None
+          Text = '  Itens do pedido'
+          TabOrder = 0
+        end
+      end
+      object gdItensPedidos: TGrid
+        Align = MostTop
+        CanFocus = True
+        ClipChildren = True
+        Position.Y = 237.000000000000000000
+        Size.Width = 907.000000000000000000
+        Size.Height = 171.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        RowCount = 3
+        Viewport.Width = 903.000000000000000000
+        Viewport.Height = 146.000000000000000000
+      end
+    end
+    inherited TbCadastro: TTabItem
+      ExplicitSize.cx = 68.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited Rectangle2: TRectangle
+        Size.Width = 907.000000000000000000
+      end
+      object Rectangle5: TRectangle
+        Align = MostTop
+        Fill.Color = xFFF6FAF9
+        Position.Y = 50.000000000000000000
+        Size.Width = 907.000000000000000000
+        Size.Height = 143.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object Rectangle7: TRectangle
+          Align = MostTop
+          Size.Width = 907.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          object Rectangle9: TRectangle
+            Align = MostTop
+            Fill.Color = xFF38AA8E
+            Size.Width = 907.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            object Label3: TLabel
+              Align = MostLeft
+              StyledSettings = [Family, Style]
+              Size.Width = 170.000000000000000000
+              Size.Height = 41.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 15.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              Text = '  Cabe'#231'alho do pedido'
+              TabOrder = 0
+            end
+          end
+        end
+        object EdtIdPed: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 4
+          Text = '1'
+          Position.X = 24.000000000000000000
+          Position.Y = 72.000000000000000000
+          Size.Width = 92.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object EdtCliente: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 2
+          Text = 'Daniel'
+          Position.X = 132.000000000000000000
+          Position.Y = 72.000000000000000000
+          Size.Width = 213.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object EdtPedTot: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 1
+          Text = '200'
+          Position.X = 376.000000000000000000
+          Position.Y = 72.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Label5: TLabel
+          Position.X = 24.000000000000000000
+          Position.Y = 49.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'ID'
+          TabOrder = 7
+        end
+        object Label6: TLabel
+          Position.X = 132.000000000000000000
+          Position.Y = 49.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'Nome'
+          TabOrder = 6
+        end
+        object Label7: TLabel
+          Position.X = 376.000000000000000000
+          Position.Y = 49.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'Total'
+          TabOrder = 5
+        end
+        object CornerButton3: TCornerButton
+          ImageIndex = 0
+          Position.X = 344.000000000000000000
+          Position.Y = 72.000000000000000000
+          Sides = [Top, Left, Bottom, Right]
+          Size.Width = 24.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          TextSettings.Trimming = None
+          XRadius = 3.000000000000000000
+          YRadius = 3.000000000000000000
+          OnClick = CornerButton3Click
+        end
+      end
+      object Rectangle6: TRectangle
+        Align = MostTop
+        Fill.Kind = None
+        Position.Y = 193.000000000000000000
+        Size.Width = 907.000000000000000000
+        Size.Height = 240.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object Rectangle8: TRectangle
+          Align = MostTop
+          Size.Width = 907.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          object Rectangle10: TRectangle
+            Align = MostTop
+            Fill.Color = xFF38AA8E
+            Size.Width = 907.000000000000000000
+            Size.Height = 49.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            object Label4: TLabel
+              Align = MostLeft
+              StyledSettings = [Family, Style]
+              Size.Width = 170.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 15.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.Trimming = None
+              Text = '  Itens do pedido'
+              TabOrder = 0
+            end
+          end
+        end
+        object EdtIdItem: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 2
+          Text = '1'
+          Position.X = 24.000000000000000000
+          Position.Y = 80.000000000000000000
+          Size.Width = 92.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object EdtProd: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 4
+          Text = 'Anilhas'
+          Position.X = 132.000000000000000000
+          Position.Y = 80.000000000000000000
+          Size.Width = 213.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object EdtPreco: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 1
+          Text = '25'
+          Position.X = 376.000000000000000000
+          Position.Y = 80.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Label8: TLabel
+          Position.X = 24.000000000000000000
+          Position.Y = 57.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'ID'
+          TabOrder = 7
+        end
+        object Label9: TLabel
+          Position.X = 132.000000000000000000
+          Position.Y = 57.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'Nome'
+          TabOrder = 6
+        end
+        object Label10: TLabel
+          Position.X = 376.000000000000000000
+          Position.Y = 57.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'Pre'#231'o'
+          TabOrder = 5
+        end
+        object CornerButton1: TCornerButton
+          ImageIndex = 0
+          Position.X = 344.000000000000000000
+          Position.Y = 80.000000000000000000
+          Sides = [Top, Left, Bottom, Right]
+          Size.Width = 24.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          TextSettings.Trimming = None
+          XRadius = 3.000000000000000000
+          YRadius = 3.000000000000000000
+          OnClick = CornerButton1Click
+        end
+      end
+    end
+  end
+  object BindNavigator1: TBindNavigator
+    Position.X = 532.000000000000000000
+    Position.Y = 66.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    DataSource = BindSourceDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object NavigatorBindSourceDB2: TBindNavigator
+    Position.X = 192.000000000000000000
+    Position.Y = 67.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    DataSource = BindSourceDB2
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object MemPedidos: TFDMemTable
+    Active = True
+    BeforePost = MemPedidosBeforePost
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 680
+    Top = 156
+    Content = {
+      41444253100000008D020000FF00010001FF02FF030400140000004D0065006D
+      00500065006400690064006F0073000500140000004D0065006D005000650064
+      00690064006F007300060000000000070000080032000000090000FF0AFF0B04
+      001000000049006400500065006400690064006F000500100000004900640050
+      0065006400690064006F000C00010000000E000D000F00011000011100011200
+      0113000114000115001000000049006400500065006400690064006F00FEFF0B
+      0400160000004E006F006D00650043006C00690065006E007400650005001600
+      00004E006F006D00650043006C00690065006E00740065000C00020000000E00
+      16001700C80000000F0001100001110001120001130001140001150016000000
+      4E006F006D00650043006C00690065006E00740065001800C8000000FEFF0B04
+      001600000054006F00740061006C00500065006400690064006F000500160000
+      0054006F00740061006C00500065006400690064006F000C00030000000E0019
+      000F000110000111000112000113000114000115001600000054006F00740061
+      006C00500065006400690064006F00FEFF0B0400120000004900640043006C00
+      690065006E00740065000500120000004900640043006C00690065006E007400
+      65000C00040000000E000D000F00011000011100011200011300011400011500
+      120000004900640043006C00690065006E0074006500FEFEFF1AFEFF1BFEFF1C
+      FF1D1E0000000000FF1F00000100000001000600000044616E69656C02000000
+      000000006940030001000000FEFEFF1D1E0001000000FF1F0000020000000100
+      040000004A6F736502000000000000005940030002000000FEFEFEFEFEFF20FE
+      FF21220002000000FF23FEFEFE0E004D0061006E0061006700650072001E0055
+      0070006400610074006500730052006500670069007300740072007900120054
+      00610062006C0065004C006900730074000A005400610062006C00650008004E
+      0061006D006500140053006F0075007200630065004E0061006D0065000A0054
+      006100620049004400240045006E0066006F0072006300650043006F006E0073
+      0074007200610069006E00740073001E004D0069006E0069006D0075006D0043
+      006100700061006300690074007900180043006800650063006B004E006F0074
+      004E0075006C006C00140043006F006C0075006D006E004C006900730074000C
+      0043006F006C0075006D006E00100053006F007500720063006500490044000E
+      006400740049006E007400330032001000440061007400610054007900700065
+      001400530065006100720063006800610062006C006500120041006C006C006F
+      0077004E0075006C006C000800420061007300650014004F0041006C006C006F
+      0077004E0075006C006C0012004F0049006E0055007000640061007400650010
+      004F0049006E00570068006500720065001A004F0072006900670069006E0043
+      006F006C004E0061006D00650018006400740041006E00730069005300740072
+      0069006E0067000800530069007A006500140053006F00750072006300650053
+      0069007A00650010006400740044006F00750062006C0065001C0043006F006E
+      00730074007200610069006E0074004C00690073007400100056006900650077
+      004C006900730074000E0052006F0077004C00690073007400060052006F0077
+      000A0052006F0077004900440010004F0072006900670069006E0061006C0018
+      00520065006C006100740069006F006E004C006900730074001C005500700064
+      0061007400650073004A006F00750072006E0061006C00120053006100760065
+      0050006F0069006E0074000E004300680061006E00670065007300}
+    object MemPedidosIdPedido: TIntegerField
+      FieldName = 'IdPedido'
+    end
+    object MemPedidosNomeCliente: TStringField
+      FieldName = 'NomeCliente'
+      Size = 200
+    end
+    object MemPedidosTotalPedido: TFloatField
+      FieldName = 'TotalPedido'
+    end
+    object MemPedidosIdCliente: TIntegerField
+      FieldName = 'IdCliente'
+    end
+  end
+  object MemItensPedidos: TFDMemTable
+    Active = True
+    BeforePost = MemItensPedidosBeforePost
+    IndexFieldNames = 'IdPedido'
+    MasterSource = dsPedidos
+    MasterFields = 'IdPedido'
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 680
+    Top = 376
+    Content = {
+      41444253100000008B030000FF00010001FF02FF0304001E0000004D0065006D
+      004900740065006E007300500065006400690064006F00730005001E0000004D
+      0065006D004900740065006E007300500065006400690064006F007300060000
+      000000070000080032000000090000FF0AFF0B04000C00000049006400490074
+      0065006D0005000C000000490064004900740065006D000C00010000000E000D
+      000F000110000111000112000113000114000115000C00000049006400490074
+      0065006D00FEFF0B0400160000004E006F006D006500500072006F0064007500
+      74006F000500160000004E006F006D006500500072006F006400750074006F00
+      0C00020000000E0016001700640000000F000110000111000112000113000114
+      00011500160000004E006F006D006500500072006F006400750074006F001800
+      64000000FEFF0B04001200000049006400500072006F006400750074006F0005
+      001200000049006400500072006F006400750074006F000C00030000000E000D
+      000F000110000111000112000113000114000115001200000049006400500072
+      006F006400750074006F00FEFF0B040010000000490064005000650064006900
+      64006F0005001000000049006400500065006400690064006F000C0004000000
+      0E000D000F000110000111000112000113000114000115001000000049006400
+      500065006400690064006F00FEFF0B04000A00000050007200650063006F0005
+      000A00000050007200650063006F000C00050000000E0019000F000110000111
+      000112000113000114000115000A00000050007200650063006F00FEFEFF1AFE
+      FF1BFEFF1CFF1D1E0000000000FF1F000001000000010007000000416E696C68
+      617302000100000003000100000004000000000000003940FEFEFF1D1E000100
+      0000FF1F00000200000001000F000000416E696C686173206D61696F72657302
+      000100000003000100000004000000000000003940FEFEFF1D1E0002000000FF
+      1F00000300000001000600000042617272617302000200000003000100000004
+      000000000000C06240FEFEFF1D1E0003000000FF1F00000400000001000C0000
+      0042617272617320666978617302000300000003000200000004000000000000
+      004940FEFEFF1D1E0004000000FF1F0000050000000100050000005065736F73
+      02000400000003000200000004000000000000004940FEFEFEFEFEFF20FEFF21
+      220005000000FF23FEFEFE0E004D0061006E0061006700650072001E00550070
+      0064006100740065007300520065006700690073007400720079001200540061
+      0062006C0065004C006900730074000A005400610062006C00650008004E0061
+      006D006500140053006F0075007200630065004E0061006D0065000A00540061
+      00620049004400240045006E0066006F0072006300650043006F006E00730074
+      007200610069006E00740073001E004D0069006E0069006D0075006D00430061
+      00700061006300690074007900180043006800650063006B004E006F0074004E
+      0075006C006C00140043006F006C0075006D006E004C006900730074000C0043
+      006F006C0075006D006E00100053006F007500720063006500490044000E0064
+      00740049006E0074003300320010004400610074006100540079007000650014
+      00530065006100720063006800610062006C006500120041006C006C006F0077
+      004E0075006C006C000800420061007300650014004F0041006C006C006F0077
+      004E0075006C006C0012004F0049006E0055007000640061007400650010004F
+      0049006E00570068006500720065001A004F0072006900670069006E0043006F
+      006C004E0061006D00650018006400740041006E007300690053007400720069
+      006E0067000800530069007A006500140053006F007500720063006500530069
+      007A00650010006400740044006F00750062006C0065001C0043006F006E0073
+      0074007200610069006E0074004C00690073007400100056006900650077004C
+      006900730074000E0052006F0077004C00690073007400060052006F0077000A
+      0052006F0077004900440010004F0072006900670069006E0061006C00180052
+      0065006C006100740069006F006E004C006900730074001C0055007000640061
+      007400650073004A006F00750072006E0061006C001200530061007600650050
+      006F0069006E0074000E004300680061006E00670065007300}
+    object MemItensPedidosIdItem: TIntegerField
+      FieldName = 'IdItem'
+    end
+    object MemItensPedidosNomeProduto: TStringField
+      FieldName = 'NomeProduto'
+      Size = 100
+    end
+    object MemItensPedidosIdProduto: TIntegerField
+      FieldName = 'IdProduto'
+    end
+    object MemItensPedidosIdPedido: TIntegerField
+      FieldName = 'IdPedido'
+    end
+    object MemItensPedidosPreco: TFloatField
+      FieldName = 'Preco'
+    end
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = gdPedidos
+      Columns = <>
+    end
+    object LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      GridControl = gdItensPedidos
+      Columns = <>
+    end
+    object LinkControlToFieldIdPedido: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'IdPedido'
+      Control = EdtIdPed
+      Track = False
+    end
+    object LinkControlToFieldNomeCliente: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'NomeCliente'
+      Control = EdtCliente
+      Track = False
+    end
+    object LinkControlToFieldTotalPedido: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'TotalPedido'
+      Control = EdtPedTot
+      Track = False
+    end
+    object LinkControlToFieldIdItem: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'IdItem'
+      Control = EdtIdItem
+      Track = False
+    end
+    object LinkControlToFieldPreco: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'Preco'
+      Control = EdtPreco
+      Track = False
+    end
+    object LinkControlToFieldNomeProduto: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'NomeProduto'
+      Control = EdtProd
+      Track = False
+    end
+  end
+  object dsPedidos: TDataSource
+    DataSet = MemPedidos
+    Left = 616
+    Top = 164
+  end
+  object dsItensPedidos: TDataSource
+    DataSet = MemItensPedidos
+    Left = 616
+    Top = 392
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSource = dsPedidos
+    ScopeMappings = <>
+    Left = 648
+    Top = 200
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSource = dsItensPedidos
+    ScopeMappings = <>
+    Left = 544
+    Top = 376
+  end
+end

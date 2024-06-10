@@ -58,9 +58,6 @@ end;
 procedure TFrCadastroProduto.FormDestroy(Sender: TObject);
 begin
   inherited;
-  if ListaProduto <> Nil then
-    FreeAndNil(ListaProduto);
-
   FreeAndNil(FControllerProduto);
 end;
 

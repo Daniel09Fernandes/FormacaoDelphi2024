@@ -1,0 +1,12 @@
+unit Data.Pedidos.Entity;
+
+interface
+type
+ TPedidoEntity = class
+   private
+   public
+ end;
+
+implementation
+
+end.

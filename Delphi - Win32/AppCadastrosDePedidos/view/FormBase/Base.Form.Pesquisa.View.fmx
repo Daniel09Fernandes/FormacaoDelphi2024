@@ -1,0 +1,75 @@
+object frPesquisa: TfrPesquisa
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 383
+  ClientWidth = 318
+  Position = OwnerFormCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Rectangle1: TRectangle
+    Align = MostTop
+    Fill.Color = xFF3FBA84
+    Size.Width = 318.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object Label1: TLabel
+      Align = Center
+      StyledSettings = [Family, Style]
+      Size.Width = 71.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 15.000000000000000000
+      TextSettings.FontColor = claWhite
+      TextSettings.Trimming = None
+      Text = 'Pesquisa'
+      TabOrder = 0
+    end
+  end
+  object StringGrid1: TStringGrid
+    Align = MostTop
+    CanFocus = True
+    ClipChildren = True
+    Position.Y = 50.000000000000000000
+    Size.Width = 318.000000000000000000
+    Size.Height = 279.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 298.000000000000000000
+    Viewport.Height = 254.000000000000000000
+    object ClCod: TStringColumn
+      Header = 'Codigo'
+      HeaderSettings.TextSettings.WordWrap = False
+    end
+    object clDesc: TStringColumn
+      Header = 'Descri'#231#227'o'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 188.000000000000000000
+    end
+  end
+  object Button1: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 344.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'OK'
+    TextSettings.Trimming = None
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Position.X = 96.000000000000000000
+    Position.Y = 344.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Cancelar'
+    TextSettings.Trimming = None
+    OnClick = Button2Click
+  end
+end

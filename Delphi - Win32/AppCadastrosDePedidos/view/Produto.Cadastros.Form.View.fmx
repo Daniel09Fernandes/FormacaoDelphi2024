@@ -89,11 +89,11 @@ inherited FrCadastroProduto: TFrCadastroProduto
         Size.PlatformDefault = False
         TextSettings.Trimming = None
         Text = 'ID'
-        TabOrder = 11
+        TabOrder = 12
       end
       object EdtId: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 8
+        TabOrder = 9
         Position.X = 42.000000000000000000
         Position.Y = 70.000000000000000000
         Enabled = False
@@ -103,7 +103,7 @@ inherited FrCadastroProduto: TFrCadastroProduto
       end
       object EdtName: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 4
+        TabOrder = 5
         Position.X = 90.000000000000000000
         Position.Y = 70.000000000000000000
         Enabled = False
@@ -119,11 +119,11 @@ inherited FrCadastroProduto: TFrCadastroProduto
         Size.PlatformDefault = False
         TextSettings.Trimming = None
         Text = 'Descri'#231#227'o'
-        TabOrder = 10
+        TabOrder = 11
       end
       object edtPreco: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 1
+        TabOrder = 2
         Position.X = 42.000000000000000000
         Position.Y = 118.000000000000000000
         Enabled = False
@@ -139,7 +139,7 @@ inherited FrCadastroProduto: TFrCadastroProduto
         Size.PlatformDefault = False
         TextSettings.Trimming = None
         Text = 'Pre'#231'o'
-        TabOrder = 7
+        TabOrder = 8
       end
       object EdtEstoque: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
