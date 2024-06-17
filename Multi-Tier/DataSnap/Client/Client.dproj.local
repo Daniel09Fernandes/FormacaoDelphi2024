@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/11/10 09:35:14.000.713,=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/16 11:09:41.000.756,=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/16 11:10:06.000.768,=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/04/18 18:05:44.000.965,=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/06/12 16:46:36.000.127,=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/06/12 16:46:36.000.108,=emsserverapi.dcp</Transaction>
+    <Transaction>2024/06/15 09:40:34.000.133,=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2024/06/15 09:41:28.000.363,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Client\FormPrincipalClient.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2024/06/15 09:41:28.000.363,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Client\FormPrincipalClient.dfm=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>2024/06/15 09:41:48.000.847,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Client\Client.dproj=C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/06/15 09:46:32.000.647,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Client\ClientModuleUnit1.pas</Transaction>
+    <Transaction>2024/06/15 09:46:32.000.247,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Client\ClientClassesUnit1.pas</Transaction>
+    <Transaction>2024/06/15 10:11:24.000.092,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Server\ClassePessoa.pas</Transaction>
+    <Transaction>2024/06/15 13:09:20.000.510,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Client\Pkg.Json.DTO.pas</Transaction>
+    <Transaction>2024/06/15 13:09:20.000.546,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Client\RootUnit.pas</Transaction>
+  </Transactions>
+</BorlandProject>
