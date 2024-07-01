@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2024/06/29 14:36:08.455,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\FormUnit1.pas</Transaction>
+    <Transaction>2024/06/29 14:36:08.965,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2024/06/29 14:36:09.245,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2024/06/29 14:36:09.600,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\WebModuleUnit1.pas</Transaction>
+    <Transaction>2024/06/29 14:36:09.783,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\base64.js</Transaction>
+    <Transaction>2024/06/29 14:36:09.820,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\serverfunctionexecutor.js</Transaction>
+    <Transaction>2024/06/29 14:36:09.900,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\json2.js</Transaction>
+    <Transaction>2024/06/29 14:36:09.958,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\callbackframework.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.021,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\serverfunctions.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.110,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\base64-min.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.179,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\json2-min.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.254,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\serverfunctionexecutor-min.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.366,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\callbackframework-min.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.451,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\connection.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.539,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\js\serverfunctioninvoker.js</Transaction>
+    <Transaction>2024/06/29 14:36:10.663,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\css\main.css</Transaction>
+    <Transaction>2024/06/29 14:36:10.798,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\css\serverfunctioninvoker.css</Transaction>
+    <Transaction>2024/06/29 14:36:10.916,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\templates\reversestring.html</Transaction>
+    <Transaction>2024/06/29 14:36:11.018,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\templates\serverfunctioninvoker.html</Transaction>
+    <Transaction>2024/06/29 14:36:11.120,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\images\collapse.png</Transaction>
+    <Transaction>2024/06/29 14:36:11.227,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Multi-Tier\DataSnap\Authentication\images\expand.png</Transaction>
+  </Transactions>
+</BorlandProject>
