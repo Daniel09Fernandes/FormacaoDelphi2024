@@ -1,0 +1,105 @@
+unit RootUnit;
+
+interface
+
+uses
+  Pkg.Json.DTO, System.Generics.Collections, REST.Json.Types, Rest.Json;
+
+{$M+}
+
+type
+  TInputs = class(TJsonDTO)
+  private
+    [JSONName('addresses')]
+    FAddressesArray: TArray<string>;
+    [JSONMarshalled(False)]
+    FAddresses: TList<string>;
+    FAge: Integer;
+    [JSONName('output_index')]
+    FOutputIndex: Integer;
+    [JSONName('output_value')]
+    FOutputValue: Integer;
+    [JSONName('prev_hash')]
+    FPrevHash: string;
+    FScript: string;
+    [JSONName('script_type')]
+    FScriptType: string;
+    FSequence: Int64;
+    function GetAddresses: TList<string>;
+  protected
+    function GetAsJson: string; override;
+  published
+    property Addresses: TList<string> read GetAddresses;
+    property Age: Integer read FAge write FAge;
+    property OutputIndex: Integer read FOutputIndex write FOutputIndex;
+    property OutputValue: Integer read FOutputValue write FOutputValue;
+    property PrevHash: string read FPrevHash write FPrevHash;
+    property Script: string read FScript write FScript;
+    property ScriptType: string read FScriptType write FScriptType;
+    property Sequence: Int64 read FSequence write FSequence;
+  public
+    destructor Destroy; override;
+  end;
+  
+  TRoot = class(TJsonDTO)
+  private
+    [JSONName('block_hash')]
+    FBlockHash: string;
+    [JSONName('inputs'), JSONMarshalled(False)]
+    FInputsArray: TArray<TInputs>;
+    [GenericListReflect]
+    FInputs: TObjectList<TInputs>;
+    [JSONMarshalled(False)]
+    FOptions: TJsonOptions;
+    function GetInputs: TObjectList<TInputs>;
+  protected
+    function GetAsJson: string; override;
+  published
+    property BlockHash: string read FBlockHash write FBlockHash;
+    property Inputs: TObjectList<TInputs> read GetInputs;
+    property Options: TJsonOptions read FOptions write FOptions;
+  public
+    destructor Destroy; override;
+  end;
+  
+implementation
+
+{ TInputs }
+
+destructor TInputs.Destroy;
+begin
+  GetAddresses.Free;
+  inherited;
+end;
+
+function TInputs.GetAddresses: TList<string>;
+begin
+  Result := List<string>(FAddresses, FAddressesArray);
+end;
+
+function TInputs.GetAsJson: string;
+begin
+  RefreshArray<string>(FAddresses, FAddressesArray);
+  Result := inherited;
+end;
+
+{ TRoot }
+
+destructor TRoot.Destroy;
+begin
+  GetInputs.Free;
+  inherited;
+end;
+
+function TRoot.GetInputs: TObjectList<TInputs>;
+begin
+  Result := ObjectList<TInputs>(FInputs, FInputsArray);
+end;
+
+function TRoot.GetAsJson: string;
+begin
+  RefreshArray<TInputs>(FInputs, FInputsArray);
+  Result := inherited;
+end;
+
+end.
