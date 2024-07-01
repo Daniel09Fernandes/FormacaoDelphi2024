@@ -1,0 +1,40 @@
+unit Classe.Regra.Pessoa;
+
+interface
+
+uses
+  ClassePessoa;
+
+type
+
+  TPessoaRegra = class(TPessoa)
+    public
+    function ValidaCamposObrigatorios: string;
+  end;
+
+implementation
+
+{ TPessoaRegra }
+
+function TPessoaRegra.ValidaCamposObrigatorios: string;
+begin
+  Result := '';
+
+  If Id <= 0 then
+  begin
+    Result := Result + sLineBreak + 'Informe o "ID"';
+  end;
+
+  if Nome = '' then
+  begin
+    Result := Result + sLineBreak + 'Informe o "Nome"';
+  end;
+
+  if Idade <= 0 then
+  begin
+    Result := Result + sLineBreak + 'Informe a "Idade"';
+  end;
+
+end;
+
+end.

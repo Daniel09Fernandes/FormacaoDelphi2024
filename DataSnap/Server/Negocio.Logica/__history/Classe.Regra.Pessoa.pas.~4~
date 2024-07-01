@@ -1,0 +1,49 @@
+unit Classe.Regra.Pessoa;
+
+interface
+
+uses
+  ClassePessoa;
+
+type
+  TRegra = class end;
+
+  // opcao 1: classe herdadda
+  TPessoaRegra = class(TPessoa)
+    public
+    function ValidaCamposObrigatorios: string;
+  end;
+
+  TPessoaRegra2 = class(Tregra)
+    private
+      FPessoa: TPessoa;
+    public
+      property Pessoa: TPessoa read FPessoa write FPessoa;
+  end;
+
+implementation
+
+{ TPessoaRegra }
+
+function TPessoaRegra.ValidaCamposObrigatorios: string;
+begin
+  Result := '';
+
+  If Id <= 0 then
+  begin
+    Result := Result + sLineBreak + 'Informe o "ID"';
+  end;
+
+  if Nome = '' then
+  begin
+    Result := Result + sLineBreak + 'Informe o "Nome"';
+  end;
+
+  if Idade <= 0 then
+  begin
+    Result := Result + sLineBreak + 'Informe a "Idade"';
+  end;
+
+end;
+
+end.

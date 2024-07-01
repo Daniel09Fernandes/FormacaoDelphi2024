@@ -1,0 +1,315 @@
+unit ServerMethodsUnit1;
+
+interface
+
+uses System.SysUtils, System.Classes, System.Json,
+    DataSnap.DSProviderDataModuleAdapter, Winapi.Windows,
+    Datasnap.DSServer, Datasnap.DSAuth, ClassePessoa, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, FireDAC.Stan.StorageJSON, REST.JSON, Data.DBXPlatform, System.SyncObjs;
+
+type
+  TPessoaArray = TArray<TPessoa>;
+  
+  TServerMethods1 = class(TDSServerModule)
+    memPessoa: TFDMemTable;
+    FDStanStorageJSONLink1: TFDStanStorageJSONLink;
+    memPessoaId: TIntegerField;
+    memPessoaNome: TStringField;
+    memPessoaIdade: TIntegerField;
+    procedure DSServerModuleCreate(Sender: TObject);
+    procedure DSServerModuleDestroy(Sender: TObject);
+  private
+    { Private declarations }
+    class var
+      FQtdThreadsAtivas: Integer;
+      FQtdeMaxThreads: Integer;
+      FLogStr: string;
+      FCriticalSection: TCriticalSection;
+      class procedure GravaLog(texto: string);
+    const
+      DB_PESSOA = 'DB-Pessoa.json';
+  public
+    { Public declarations }
+    class constructor Create;
+    class destructor Destroy;
+    function EchoString(Value: string): string;
+    function ReverseString(Value: string): string;
+
+    //Pessoa
+    function SetaRetornaPessoa: TPessoa;
+    function RetornaPessoa: TPessoa;
+    function GetPessoaDB: string;
+    function SetPessoaDB(dbPessoa: string): Boolean;
+    function GetPessoaNativo: TPessoa;
+    function SetPessoaNativo(pes: TPessoa): Boolean;
+    function GetPessoaNaoNativo: string;
+    function SetPessoaNaoNativo(pessoa: string): Boolean;
+
+    //Listas
+    function GetlistaPessoaArray(Count: Integer): TArray<TPessoa>;
+    function GetlistaPessoa(Count: Integer): TListaPessoa;
+    function GelistaPessoaArray2(Count: Integer): TPessoaArray;
+    function GetListaPessoaGeral(Count: Integer): string;
+    function GetListaPessoaGeral2(Count: Integer): string;
+
+    //Threads
+    function GetThreadID: Cardinal;
+    function GetThreadsAtivas: Integer;
+    function GetQtdMaxThreads: Integer;
+    function GetMetodoDemorado(tempoemMS: Integer): Boolean;
+    function GetLog: string;
+
+    //Hash
+    function AutenticaUsuario(senha: string): string;
+
+  end;
+
+implementation
+
+
+{$R *.dfm}
+
+
+uses System.StrUtils, Classe.Regra.Pessoa;
+
+function TServerMethods1.AutenticaUsuario(senha: string): string;
+const
+  SENHA_ESTATICA = '*fdt654' + 'Turma 2024';
+begin
+  if CompareStr(senha, THash) then
+
+end;
+
+class constructor TServerMethods1.Create;
+begin
+  FCriticalSection := TCriticalSection.Create;
+end;
+
+class destructor TServerMethods1.Destroy;
+begin
+  FCriticalSection.Free;
+end;
+
+procedure TServerMethods1.DSServerModuleCreate(Sender: TObject);
+begin
+  InterlockedIncrement(FQtdThreadsAtivas); // thread safe
+  InterlockedIncrement(FQtdeMaxThreads); // thread safe
+
+  GravaLog('Cria Server Methods');
+
+  // Nao eh threadSafe
+  //FQtdThreadsAtivas := FQtdThreadsAtivas + 1;
+end;
+
+procedure TServerMethods1.DSServerModuleDestroy(Sender: TObject);
+begin
+  InterlockedDecrement(FQtdThreadsAtivas);
+  GravaLog('Free Server Methods');
+end;
+
+function TServerMethods1.EchoString(Value: string): string;
+begin
+  Result := Value;
+end;
+
+function TServerMethods1.GelistaPessoaArray2(Count: Integer): TPessoaArray;
+begin
+  Result := GetlistaPessoaArray(Count);
+end;
+
+function TServerMethods1.GetlistaPessoa(Count: Integer): TListaPessoa;
+begin
+  Result := TListaPessoa.Create(True);
+  Result.AddRange(GetlistaPessoaArray(Count));
+end;
+
+function TServerMethods1.GetlistaPessoaArray(Count: Integer): TArray<TPessoa>;
+begin
+  if Count = 0 then
+    Count := 10;
+
+  for var i: Integer := 0 to Count -1 do
+  begin    
+    var pes : TPessoa := TPessoa.Create;
+    pes.Id := TThread.GetTickCount;
+    pes.Nome := 'Teste '+pes.Id.ToString;
+    pes.Idade := random(1000);
+
+    SetLength(Result, Length(Result)+1);
+    Result[Length(Result)-1] := pes;
+  end;
+end;
+
+function TServerMethods1.GetListaPessoaGeral(Count: Integer): string;
+begin
+  var lstPes: TListaPessoa := GetlistaPessoa(Count);
+  Result := TJson.ObjectToJsonString(lstPes);
+  lstPes.Free;
+end;
+
+function TServerMethods1.GetListaPessoaGeral2(Count: Integer): string;
+begin
+  //uses Data.DbXPlataform
+  GetInvocationMetadata().ResponseContentType := 'application/json';
+  GetInvocationMetadata().ResponseContent := GetListaPessoaGeral(Count);
+end;
+
+function TServerMethods1.GetLog: string;
+begin
+  Result := FLogStr;
+end;
+
+function TServerMethods1.GetMetodoDemorado(tempoemMS: Integer): Boolean;
+begin
+  GravaLog('INI: Metodo Demorado');
+  Sleep(tempoemMS);
+  Result := True;
+  GravaLog('FIM: Metodo Demorado');
+end;
+
+function TServerMethods1.GetPessoaDB: string;
+begin
+   if FileExists(DB_PESSOA) then
+   begin
+     memPessoa.LoadFromFile(DB_PESSOA,sfJSON);
+   end;
+
+   var strStm: TStringStream := TStringStream.Create;
+   memPessoa.SaveToStream(strStm,sfJSON);
+   Result := strStm.DataString;
+   strStm.Free;
+end;
+
+function TServerMethods1.GetPessoaNaoNativo: string;
+begin
+  var pes: TPessoa := TPessoa.Create;
+  pes.Id := 321;
+  pes.Nome := 'Wagner';
+  pes.Idade := 90;
+
+  Result := TJson.ObjectToJsonString(pes);
+
+  pes.Free;
+end;
+
+function TServerMethods1.GetPessoaNativo: TPessoa;
+begin
+  Result := TPessoa.Create;
+  Result.Id := 123;
+  Result.Nome := 'Thiago';
+  Result.Idade := 40;
+end;
+
+function TServerMethods1.GetQtdMaxThreads: Integer;
+begin
+  Result := FQtdeMaxThreads;
+  GravaLog('Max Threads');
+end;
+
+function TServerMethods1.GetThreadID: Cardinal;
+begin
+   Result := GetCurrentThreadId;
+end;
+
+function TServerMethods1.GetThreadsAtivas: Integer;
+begin
+  Result := FQtdThreadsAtivas;
+end;
+
+class procedure TServerMethods1.GravaLog(texto: string);
+begin
+  FCriticalSection.Acquire;
+  try
+    FLogStr :=
+      FLogStr + TimeTostr(Now) + ' - '+GetCurrentThreadID.ToString + ' - '+texto+ sLineBreak;
+  finally
+    FCriticalSection.Leave;
+  end;
+
+end;
+
+function TServerMethods1.RetornaPessoa: TPessoa;
+begin
+  Result := TPessoa.Create;
+  Result.Id := 2;
+  Result.Nome := 'Teste';
+  Result.Idade := 25;
+end;
+
+function TServerMethods1.ReverseString(Value: string): string;
+begin
+  Result := System.StrUtils.ReverseString(Value);
+end;
+
+function TServerMethods1.SetaRetornaPessoa: TPessoa;
+begin
+  Result := TPessoa.Create;
+  Result.Id := 1;
+  Result.Nome := 'Gustavo';
+  Result.Idade := 33;
+end;
+
+function TServerMethods1.SetPessoaDB(dbPessoa: string): Boolean;
+begin
+  var srtStm: TStringStream := TStringStream.Create(dbPessoa);
+  memPessoa.LoadFromStream(srtStm,sfJSON);
+
+  memPessoa.SaveToFile(DB_PESSOA,sfJSON);
+  memPessoa.Close;
+
+  Result := True;
+end;
+
+function TServerMethods1.SetPessoaNaoNativo(pessoa: string): Boolean;
+begin
+  var pes: TPessoa := TJson.JsonToObject<TPessoa>(pessoa);
+  var jsonObj : string := TJson.ObjectToJsonString(pes);
+
+  //opcao 1: classe pessoa herdada
+  var pesRegra1: TPessoaRegra := TJson.JsonToObject<TPessoaRegra>(pessoa);
+  var validacaoPessoa: string := pesRegra1.ValidaCamposObrigatorios;
+
+  if validacaoPessoa <> '' then
+  begin
+   
+   //caso erro retornar o reponse adequado
+   //GetInvocationMetadata.ResponseCode := 400;
+   
+    // evitar raise no server
+    raise Exception.Create('Erro ao salvar pessoa '+validacaoPessoa);
+  end;
+
+  //opcao 2: Com Wrapper
+  var pesRegra2: TPessoaRegra2 := TPessoaRegra2.Create;
+  pesRegra2.Pessoa := TJson.JsonToObject<TPessoa>(pessoa);
+
+  var validacaoPesso2: string := pesRegra2.ValidaCamposObrigarios;
+  if validacaoPesso2 <> '' then
+  begin
+    // evitar raise no server
+    raise Exception.Create('Erro ao salvar pessoa '+validacaoPesso2);
+  end;
+
+  
+  var st1: TStringList := TStringList.Create;
+  st1.Add(jsonObj);
+  st1.SaveToFile('log-pessoa-NaoNativo.json');
+  st1.Free;
+  Result := True;
+end;
+
+function TServerMethods1.SetPessoaNativo(pes: TPessoa): Boolean;
+begin
+  var jsonObj: string := TJson.ObjectToJsonString(pes);
+
+  var st1: TStringList := TStringList.Create;
+  st1.Add(jsonObj);
+  st1.SaveToFile('log-pessoa-Nativo.json');
+  st1.Free;
+  Result := True;
+end;
+
+end.
+
