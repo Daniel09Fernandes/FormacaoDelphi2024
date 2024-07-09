@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8DCDDB2C-8506-4DE0-95F2-89337F43F2D9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TestaComponentes\TestaComponentes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PanelObrigatorio\PanelObrigatorio.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TestaComponentes">
+        <MSBuild Projects="TestaComponentes\TestaComponentes.dproj"/>
+    </Target>
+    <Target Name="TestaComponentes:Clean">
+        <MSBuild Projects="TestaComponentes\TestaComponentes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestaComponentes:Make">
+        <MSBuild Projects="TestaComponentes\TestaComponentes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PanelObrigatorio">
+        <MSBuild Projects="PanelObrigatorio\PanelObrigatorio.dproj"/>
+    </Target>
+    <Target Name="PanelObrigatorio:Clean">
+        <MSBuild Projects="PanelObrigatorio\PanelObrigatorio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PanelObrigatorio:Make">
+        <MSBuild Projects="PanelObrigatorio\PanelObrigatorio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TestaComponentes;PanelObrigatorio"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TestaComponentes:Clean;PanelObrigatorio:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TestaComponentes:Make;PanelObrigatorio:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
