@@ -1,0 +1,38 @@
+unit FormTestaComponentes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.DBCtrls, Vcl.ExtCtrls,
+  Vcl.ComCtrls, Data.DB, Componente.Panel.Obrigarorio, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.Mask;
+
+type
+  TFormComps = class(TForm)
+    PageControl1: TPageControl;
+    TabPanelObrig: TTabSheet;
+    PanelControle: TPanel;
+    DBNavigator1: TDBNavigator;
+    PanelGrid: TPanel;
+    DBGrid1: TDBGrid;
+    Panel1: TPanel;
+    PanelObrigatorio1: TPanelObrigatorio;
+    dtsPessoa: TDataSource;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormComps: TFormComps;
+
+implementation
+
+{$R *.dfm}
+
+end.
