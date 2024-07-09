@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{60D86CB5-5560-4FE2-83F7-F41B4EA122D8}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ClientPackge.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\DLL\Hash.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ClientPackge">
+        <MSBuild Projects="ClientPackge.dproj"/>
+    </Target>
+    <Target Name="ClientPackge:Clean">
+        <MSBuild Projects="ClientPackge.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClientPackge:Make">
+        <MSBuild Projects="ClientPackge.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Hash">
+        <MSBuild Projects="..\DLL\Hash.dproj"/>
+    </Target>
+    <Target Name="Hash:Clean">
+        <MSBuild Projects="..\DLL\Hash.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Hash:Make">
+        <MSBuild Projects="..\DLL\Hash.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ClientPackge;Hash"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ClientPackge:Clean;Hash:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ClientPackge:Make;Hash:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
