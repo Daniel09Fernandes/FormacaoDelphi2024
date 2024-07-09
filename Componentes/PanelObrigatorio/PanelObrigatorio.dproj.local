@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/07/04 16:43:02.000.226,=rtl.dcp</Transaction>
+    <Transaction>2024/07/04 16:54:32.000.933,=rtl.dcp</Transaction>
+    <Transaction>2024/07/06 03:37:55.000.740,=rtl.dcp</Transaction>
+    <Transaction>2024/07/06 11:41:18.000.041,=rtl.dcp</Transaction>
+    <Transaction>2024/07/06 11:42:22.000.968,C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Package1.dproj=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\PanelObrigatorio.dproj</Transaction>
+    <Transaction>2024/07/06 11:55:12.000.530,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Unit1.pas</Transaction>
+    <Transaction>2024/07/06 11:55:43.000.364,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Componente.Panel.Obrigarorio.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Unit1.pas</Transaction>
+    <Transaction>2024/07/06 11:58:40.000.164,=vcl.dcp</Transaction>
+    <Transaction>2024/07/06 14:44:34.000.958,=dbrtl.dcp</Transaction>
+    <Transaction>2024/07/06 14:44:34.000.989,=vclwinx.dcp</Transaction>
+    <Transaction>2024/07/06 14:44:35.000.013,=vcldb.dcp</Transaction>
+    <Transaction>2024/07/06 15:26:53.000.958,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Componente.Panel.Obrigatorio.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Componente.Panel.Obrigarorio.pas</Transaction>
+    <Transaction>2024/07/06 16:09:34.000.054,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Unit1.pas</Transaction>
+    <Transaction>2024/07/06 16:10:14.000.416,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Unit1.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\PanelObrigatorio\Registra.Panel.Obrigatorio.pas</Transaction>
+  </Transactions>
+</BorlandProject>
