@@ -1,0 +1,67 @@
+unit FormPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    PanelOO: TPanel;
+    ButtoOO: TButton;
+    ButtonInterfaces: TButton;
+    procedure ButtoOOClick(Sender: TObject);
+    procedure ButtonInterfacesClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    // Published, acessivel nos eventos
+    procedure MeuTeste(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+uses Classe.Pessoa, IBase;
+
+procedure TForm1.ButtonInterfacesClick(Sender: TObject);
+begin
+  var PessoaTeste: IPessoa;
+
+  PessoaTeste := TFactoryPessoa.New.NovaPessoa;
+
+  Showmessage(PessoaTeste.SetNome('Gustavo').GetNome);
+end;
+
+procedure TForm1.ButtoOOClick(Sender: TObject);
+var
+  lPF: TPessoaFisica;
+  lPJ: TPessoaJuridica;
+begin
+  lPF := TPessoaFisica.Create;
+  lPF.GetNovoID;
+  lPF.Free;
+
+  lPJ := TPessoaJuridica.Create;
+  lPJ.NomeFantasia := 'Texto @';
+  lPJ.Free;
+end;
+
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  ReportMemoryLeaksOnShutdown := True;
+end;
+
+procedure TForm1.MeuTeste(Sender: TObject);
+begin
+//
+end;
+
+end.

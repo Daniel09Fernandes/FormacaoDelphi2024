@@ -1,0 +1,64 @@
+unit IBase;
+
+interface
+
+type
+  IPessoa = interface(IInterface)
+    ['{B4D888F4-72F1-419C-A36D-D411082972DB}']
+    function New: IPessoa;
+    function GetNome: string;
+    function SetNome(const NovoNome: string): IPessoa;
+  end;
+
+  IFactoryPessoa = interface(IInterface)
+    ['{006254E0-E5AF-4BE9-9777-5B7D2466C46B}']
+    function NovaPessoa: IPessoa;
+  end;
+
+  TTestePessoa = class(TInterfacedObject, IPessoa)
+  private
+    FNome: String;
+  public
+    function New: IPessoa;
+    function GetNome: string;
+    function SetNome(const NovoNome: string): IPessoa;
+  end;
+
+  TFactoryPessoa = class(TInterfacedObject, IFactoryPessoa)
+    class function New: IFactoryPessoa;
+    function NovaPessoa: IPessoa;
+  end;
+
+implementation
+
+{ TTestePessoa }
+
+function TTestePessoa.GetNome: string;
+begin
+  Result := FNome;
+end;
+
+function TTestePessoa.New: IPessoa;
+begin
+  Result := Self.Create;
+end;
+
+function TTestePessoa.SetNome(const NovoNome: string): IPessoa;
+begin
+  Result := Self;
+  FNome := NovoNome;
+end;
+
+{ TFactoryPessoa }
+
+class function TFactoryPessoa.New: IFactoryPessoa;
+begin
+  Result := Self.Create;
+end;
+
+function TFactoryPessoa.NovaPessoa: IPessoa;
+begin
+  Result := TTestePessoa.Create;
+end;
+
+end.

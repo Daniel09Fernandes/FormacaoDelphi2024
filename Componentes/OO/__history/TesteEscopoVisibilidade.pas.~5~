@@ -1,0 +1,39 @@
+unit TesteEscopoVisibilidade;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TFormTesteEscopoVisibilidade = class(TForm)
+  private
+    { Private declarations }
+    varPrivate: string;
+
+  strict private
+    varStrictPrivate: string;
+
+  protected
+    varProtected: string;
+
+  strict protected
+    varStrictProtected: string;
+
+  public
+    { Public declarations }
+    varPublic: string;
+
+  published
+    property Propriedade: string read varProtected write varProtected;
+  end;
+
+var
+  FormTesteEscopoVisibilidade: TFormTesteEscopoVisibilidade;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,14 @@
+unit Classe.Base;
+
+interface
+
+type
+  TClasseBase = class
+    protected
+    function GetNovID: Int64; virtual; abstract;
+  end;
+
+
+implementation
+
+end.

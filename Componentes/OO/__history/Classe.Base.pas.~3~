@@ -1,0 +1,18 @@
+unit Classe.Base;
+
+interface
+
+type
+  IINterfaceBase = interface(IINterface)
+    ['{D7ACF8D5-8C7D-4351-82A6-E9865776F6DB}']
+  end;
+
+  TClasseBase = class
+    protected
+    function GetNovID: Int64; virtual; abstract;
+  end;
+
+
+implementation
+
+end.
