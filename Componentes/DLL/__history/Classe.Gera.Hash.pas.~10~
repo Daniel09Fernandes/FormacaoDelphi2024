@@ -1,0 +1,32 @@
+unit Classe.Gera.Hash;
+
+interface
+
+uses Form.Visualiza.Hash;
+
+  function GeraHashArquivo(pNomeArq: pchar): PChar;
+  function GetDLLVersion: Integer;
+
+  procedure VisualizaHash(pHash: pChar);
+
+implementation
+
+uses
+  System.Hash, System.SysUtils;
+
+function GeraHashArquivo(pNomeArq: pchar): PChar;
+begin
+
+end;
+
+function GetDLLVersion: Integer;
+begin
+  Result := 123;
+end;
+
+procedure VisualizaHash(pHash: pChar);
+begin
+  TFormVisualizaHash.Executa(pHash);
+end;
+
+end.

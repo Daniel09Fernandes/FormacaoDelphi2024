@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3312F861-D064-45C2-A543-16F6D85A3A3B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Hash.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Hash">
+        <MSBuild Projects="Hash.dproj"/>
+    </Target>
+    <Target Name="Hash:Clean">
+        <MSBuild Projects="Hash.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Hash:Make">
+        <MSBuild Projects="Hash.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Hash"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Hash:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Hash:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
