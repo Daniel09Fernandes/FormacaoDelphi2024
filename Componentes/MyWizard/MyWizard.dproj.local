@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/07/04 16:43:02.000.226,=rtl.dcp</Transaction>
+    <Transaction>2024/07/04 16:54:32.000.933,=rtl.dcp</Transaction>
+    <Transaction>2024/07/06 03:37:55.000.740,=rtl.dcp</Transaction>
+    <Transaction>2024/07/11 17:40:13.000.540,=rtl.dcp</Transaction>
+    <Transaction>2024/07/13 17:00:33.000.769,=rtl.dcp</Transaction>
+    <Transaction>2024/07/13 17:01:57.000.562,C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Package1.dproj=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\MyWizard\MyWizard.dproj</Transaction>
+    <Transaction>2024/07/13 17:02:10.000.545,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\MyWizard\Unit1.pas</Transaction>
+    <Transaction>2024/07/13 17:02:25.000.192,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\MyWizard\Unit1.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\MyWizard\MyWizard.pas</Transaction>
+    <Transaction>2024/07/13 17:02:44.000.896,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\MyWizard\MyWizard.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\MyWizard\Classe.MyWizard.pas</Transaction>
+    <Transaction>2024/07/13 17:03:08.000.043,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\MyWizard\Classe.MyWizard.pas=</Transaction>
+    <Transaction>2024/07/13 17:03:38.000.246,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\Source\Classe.MyWizard.pas</Transaction>
+    <Transaction>2024/07/13 17:08:01.000.983,=designide.dcp</Transaction>
+  </Transactions>
+</BorlandProject>
