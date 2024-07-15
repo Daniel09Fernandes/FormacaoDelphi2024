@@ -1,0 +1,17 @@
+unit Registra.Classe.DBDateTimePicker;
+
+interface
+
+procedure register;
+
+implementation
+
+uses
+  System.Classes, DesignIntf, ClasseDBDateTimePicker, Classe.Editor.Propriedade;
+
+procedure register;
+begin
+  //RegisterComponent();
+end;
+
+end.

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/07/04 16:43:02.000.226,=rtl.dcp</Transaction>
+    <Transaction>2024/07/04 16:54:32.000.933,=rtl.dcp</Transaction>
+    <Transaction>2024/07/06 03:37:55.000.740,=rtl.dcp</Transaction>
+    <Transaction>2024/07/11 17:40:13.000.540,=rtl.dcp</Transaction>
+    <Transaction>2024/07/13 09:39:21.000.180,=rtl.dcp</Transaction>
+    <Transaction>2024/07/13 09:41:26.000.081,C:\Users\Gustavo Mena Barreto\OneDrive\Documentos\Embarcadero\Studio\Projects\Package1.dproj=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\pkgDBDateTimePicker.dproj</Transaction>
+    <Transaction>2024/07/13 09:41:44.000.365,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas</Transaction>
+    <Transaction>2024/07/13 09:42:19.000.851,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\Source\Classe.DBDateTimePicker.pas</Transaction>
+    <Transaction>2024/07/13 10:16:47.000.464,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas</Transaction>
+    <Transaction>2024/07/13 10:17:36.000.168,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.dfm=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Form.Sobre.dfm</Transaction>
+    <Transaction>2024/07/13 10:17:36.000.168,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Form.Sobre.pas</Transaction>
+    <Transaction>2024/07/13 10:49:43.000.298,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas</Transaction>
+    <Transaction>2024/07/13 10:50:17.000.304,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Classe.Editor.Propriedade.pas</Transaction>
+    <Transaction>2024/07/13 10:55:32.000.226,=DesignIDE.dcp</Transaction>
+    <Transaction>2024/07/13 10:55:47.000.128,=vcldb.dcp</Transaction>
+    <Transaction>2024/07/13 10:55:47.000.050,=dbrtl.dcp</Transaction>
+    <Transaction>2024/07/13 11:12:00.000.265,=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas</Transaction>
+    <Transaction>2024/07/13 11:12:39.000.771,C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Unit1.pas=C:\Users\Gustavo Mena Barreto\OneDrive\Área de Trabalho\Componentes\DBDateTimePicker\Registra.Classe.DBDateTimePicker.pas</Transaction>
+  </Transactions>
+</BorlandProject>

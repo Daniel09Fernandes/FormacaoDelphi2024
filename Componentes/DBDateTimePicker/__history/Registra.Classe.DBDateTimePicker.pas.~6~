@@ -1,0 +1,18 @@
+unit Registra.Classe.DBDateTimePicker;
+
+interface
+
+procedure register;
+
+implementation
+
+uses
+  System.Classes, DesignIntf, Classe.DBDateTimePicker, Classe.Editor.Propriedade;
+
+procedure register;
+begin
+  RegisterComponent('Turma2024', [TDBDateTimePicker]);
+  RegisterComponentEditor(TDBDateTimePicker, TEditorMenu);
+end;
+
+end.

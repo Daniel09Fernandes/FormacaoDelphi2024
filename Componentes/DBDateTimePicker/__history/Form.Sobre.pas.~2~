@@ -1,0 +1,28 @@
+unit Form.Sobre;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage;
+
+type
+  TfrmSobre = class(TForm)
+    ImageLogo: TImage;
+    PanelSobre: TPanel;
+    Button1: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmSobre: TfrmSobre;
+
+implementation
+
+{$R *.dfm}
+
+end.
