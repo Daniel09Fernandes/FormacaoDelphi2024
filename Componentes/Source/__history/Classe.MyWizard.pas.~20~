@@ -1,0 +1,80 @@
+unit Classe.MyWizard;
+
+interface
+
+uses
+  ToolsAPI, Vcl.Menus;
+
+type
+  TMyOTAWizard = class(TNotifierObject, IOTAWizard)
+  private
+    FMenuItem: TMenuItem;
+    procedure MenuItemClick(Sender: TOBject);
+
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    function GetIDString: string;
+    function GetName: string;
+    function GetState: TWizardState;
+    procedure Execute;
+  end;
+
+implementation
+
+uses
+  SysUtils, Vcl.Dialogs;
+
+{ TMyOTAWizard }
+
+constructor TMyOTAWizard.Create;
+var
+  MainMenu: TMainMenu;
+  ToolsMenuItem: TMenuItem;
+begin
+  inherited Create;
+
+  MainMenu := (BorlandIDEServices as INTAServices).MainMenu;
+  ToolsMenuItem := MainMenu.Items.Find('Tools');
+  if Assigned(ToolsMenuItem) then
+  begin
+    FMenuItem := TMenuItem.Create(nil);
+    FMenuItem.Caption := 'Aquasoft OTA Wizard 2024';
+    FMenuItem.OnClick := MenuItemClick;
+    ToolsMenuItem.Add(FMenuItem);'
+  end;
+end;
+
+destructor TMyOTAWizard.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TMyOTAWizard.Execute;
+begin
+
+end;
+
+function TMyOTAWizard.GetIDString: string;
+begin
+
+end;
+
+function TMyOTAWizard.GetName: string;
+begin
+
+end;
+
+function TMyOTAWizard.GetState: TWizardState;
+begin
+
+end;
+
+procedure TMyOTAWizard.MenuItemClick(Sender: TOBject);
+begin
+  Showmessage('Wizard Turma 2024');
+end;
+
+end.
