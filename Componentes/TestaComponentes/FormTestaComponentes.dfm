@@ -17,7 +17,7 @@ object FormComps: TFormComps
     Top = 0
     Width = 809
     Height = 589
-    ActivePage = TabPanelObrig
+    ActivePage = TabCardViewer
     Align = alClient
     TabOrder = 0
     ExplicitWidth = 803
@@ -31,7 +31,6 @@ object FormComps: TFormComps
         Height = 73
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 795
         object DBNavigator1: TDBNavigator
           Left = 1
           Top = 1
@@ -40,7 +39,6 @@ object FormComps: TFormComps
           DataSource = dtsPessoa
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 793
         end
       end
       object PanelGrid: TPanel
@@ -50,8 +48,6 @@ object FormComps: TFormComps
         Height = 415
         Align = alRight
         TabOrder = 1
-        ExplicitLeft = 514
-        ExplicitHeight = 398
         object DBGrid1: TDBGrid
           Left = 1
           Top = 1
@@ -90,8 +86,6 @@ object FormComps: TFormComps
         Height = 71
         Align = alBottom
         TabOrder = 2
-        ExplicitTop = 471
-        ExplicitWidth = 795
         object ButtonValidaCampos: TButton
           Left = 128
           Top = 11
@@ -106,6 +100,16 @@ object FormComps: TFormComps
           ParentFont = False
           TabOrder = 0
         end
+        object DBDateTimePicker1: TDBDateTimePicker
+          Left = 496
+          Top = 24
+          Width = 186
+          Height = 23
+          Date = 45486.000000000000000000
+          Time = 0.473765555558202300
+          TabOrder = 1
+          DataSource = dtsPessoa
+        end
       end
       object PanelObrigatorio1: TPanelObrigatorio
         AlignWithMargins = True
@@ -117,8 +121,6 @@ object FormComps: TFormComps
         Align = alClient
         DesenhaObrigatorios = True
         Datasource = dtsPessoa
-        ExplicitWidth = 508
-        ExplicitHeight = 392
         object Label1: TLabel
           Left = 16
           Top = 16
@@ -185,6 +187,21 @@ object FormComps: TFormComps
           DataSource = dtsPessoa
           TabOrder = 2
         end
+      end
+    end
+    object TabCardViewer: TTabSheet
+      Caption = 'CardViewer'
+      ImageIndex = 1
+      object EditPrompt: TEdit
+        Left = 0
+        Top = 0
+        Width = 801
+        Height = 23
+        Align = alTop
+        TabOrder = 0
+        TextHint = 'Gere imagens com IA'
+        OnKeyDown = EditPromptKeyDown
+        ExplicitWidth = 795
       end
     end
   end
