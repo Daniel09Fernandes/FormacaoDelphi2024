@@ -1,0 +1,15 @@
+unit Classe.OpenAI.Image;
+
+interface
+
+type
+  TOpenAIItem = class
+  private
+    FImage: string;
+  public
+    property Image: string read FImage write FImage;
+  end;
+
+implementation
+
+end.

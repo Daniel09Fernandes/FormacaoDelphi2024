@@ -1,0 +1,28 @@
+unit Form.Visualiza.Card;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TfrmVisualizaCard = class(TForm)
+    PanelControles: TPanel;
+    CheckBoxProportional: TCheckBox;
+    CheckBoxStretch: TCheckBox;
+    ImagePreview: TImage;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmVisualizaCard: TfrmVisualizaCard;
+
+implementation
+
+{$R *.dfm}
+
+end.

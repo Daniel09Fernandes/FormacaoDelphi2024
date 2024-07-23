@@ -1,0 +1,514 @@
+unit Classe.Card.Viewer;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.Graphics, Vcl.Dialogs, System.IOUtils,
+  System.Types, System.NetEncoding, REST.Types, REST.Client, REST.Authenticator.OAuth.WebForm.Win,
+  REST.Authenticator.OAuth, System.JSON, REST.Json;
+
+type
+  TCardViewer = class(TCustomPanel)
+  private
+    FSobre: string;
+    FIndiceAtual: Integer;
+    FListaImagens: TStringList;
+    FImagemPrincipal: TImage;
+    FStretch: Boolean;
+    FProportional: Boolean;
+    FMargemHorizontal: Integer;
+    FMargemProporcaoVertical: Integer;
+    FImagemEsquerda: TImage;
+    FImagemDireita: TImage;
+    FMargemVertical: Integer;
+    FPastaImagens: string;
+    FProximaImagemDireita: TPicture;
+    FProximaImagemEsquerda: TPicture;
+
+    procedure DefineMargens;
+    procedure SetProportional(const Value: Boolean);
+    procedure SetStretch(const Value: Boolean);
+    procedure SetPastaImagens(const Value: string);
+  protected
+    procedure CreateParams(var Params: TCreateParams); override;
+    procedure Resize; override;
+    procedure CarregaImagemGenerica(CaminhoImagem: string; pic: TPicture);
+    procedure DoImageClick(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure SelecionaImagemEsquerda;
+    procedure SelecionaImagemDireita;
+    procedure DoPrincipalDblClick(Sender: TObject);
+    procedure ExibeImagem(imgJSON: string);
+    procedure ExecutaCallAPI(prompt: string);
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+
+    procedure CarregaImagemPrincipal(CaminhoImagem: string);
+    procedure CarregaImagemEsquerda(CaminhoImagem: string);
+    procedure CarregaImagemDireita(CaminhoImagem: string);
+
+    procedure GeraImagemAI(prompt: string);
+
+    public const
+      MARGEM_DEFAULT = 20;
+      PROPORCAO_IMAGEM_PADRAO = 8;
+   published
+     property Align;
+     property Stretch: Boolean read FStretch write SetStretch default true;
+     property Proportional: Boolean read FProportional write SetProportional default true;
+     property MargemHorizontal: Integer read FMargemHorizontal write FMargemHorizontal default MARGEM_DEFAULT;
+     property MargemVertical: Integer read FMargemVertical write FMargemVertical default MARGEM_DEFAULT;
+     property MargemProporcaoVertical: Integer read FMargemProporcaoVertical write FMargemProporcaoVertical default 8;
+     property ImagemPrincipal: TImage read FImagemPrincipal write FImagemPrincipal;
+     property ImagemEsquerda: TImage read FImagemEsquerda write FImagemEsquerda;
+     property ImagemDireita: TImage read FImagemDireita write FImagemDireita;
+     Property PastaImagens: string read FPastaImagens write SetPastaImagens;
+     property Sobre: string read FSobre write FSobre;
+
+  end;
+
+implementation
+
+uses
+  vcl.Imaging.GIFImg, Vcl.Imaging.jpeg, vcl.imaging.pngimage,
+  Form.Visualiza.Card, Classe.OpenAI.Image;
+
+{ TCardViewer }
+
+procedure TCardViewer.CarregaImagemPrincipal(CaminhoImagem: string);
+begin
+  CarregaImagemGenerica(CaminhoImagem, FImagemPrincipal.Picture);
+end;
+
+procedure TCardViewer.CarregaImagemDireita(CaminhoImagem: string);
+begin
+  CarregaImagemGenerica(CaminhoImagem, FImagemDireita.Picture);
+end;
+
+procedure TCardViewer.CarregaImagemEsquerda(CaminhoImagem: string);
+begin
+  CarregaImagemGenerica(CaminhoImagem, FImagemEsquerda.Picture);
+end;
+
+procedure TCardViewer.CarregaImagemGenerica(CaminhoImagem: string;
+  pic: TPicture);
+var
+  Header: array[0..7] of Byte;
+begin
+  if not TFile.Exists(CaminhoImagem) then
+    raise Exception.Create('Arquivo nao encontrado: '+CaminhoImagem);
+
+  var Graphic: TGraphic;
+  var stmFS: TFileStream := TFileStream.Create(CaminhoImagem, fmOpenRead);
+
+  try
+    stmFS.Read(Header, SizeOf(Header));
+
+    if (Header[0] = $47) and (Header[1] = $49) and (Header[2] = $46) then //GIF
+      Graphic := TGIFImage.Create
+    else
+    if (Header[0] = $FF) and (Header[1] = $D8) then //JPEG
+      Graphic := TJPEGImage.Create
+    else
+    if (Header[0] = $89) and (Header[1] = $50) and (Header[2] = $4E) and
+       (Header[3] = $47) and (Header[4] = $0D) and (Header[5] = $0A) and
+       (Header[6] = $1A) and (Header[7] = $0A) then //PNG
+      Graphic := TPngImage.Create
+    else
+    if (Header[0] = $42) and (Header[1] = $4D) then //BMP
+      Graphic := TBitmap.Create
+    else
+      raise Exception.Create('Formato "' + LowerCase(ExtractFileExt(CaminhoImagem)) + '" de imagem nao suportado.');
+
+    try
+      stmFS.Position := 0;
+      Graphic.LoadFromStream(stmFS);
+      pic.Assign(Graphic);
+
+    finally
+      Graphic.Free;
+    end;
+  finally
+    stmFS.Free;
+  end;
+
+{
+  NAO ACONSELHAVEL, MAS FUNCIONA
+  var Extension: string := LowerCase(ExtractFileExt(CaminhoImagem));
+
+  if Extension = '.bmp' then
+    Graphic := TBitmap.Create
+  else
+  if (Extension = '.jpg') or (Extension = '.jpeg') then
+    Graphic := TJPEGImage.Create
+  else
+  if Extension = '.png' then
+    Graphic := TPngImage.Create
+  else
+  if Extension = '.gif' then
+    Graphic := TGIFImage.Create
+  else
+    raise Exception.Create('Formato "'+Extension+'" de imagem nao suportado');
+ }
+end;
+
+constructor TCardViewer.Create(AOwner: TComponent);
+begin
+  inherited;
+  FStretch := True;
+  FProportional := True;
+  FIndiceAtual := 0;
+  FListaImagens := TStringList.Create;
+  FProximaImagemDireita := TPicture.Create;
+  FProximaImagemEsquerda := TPicture.Create;
+
+  FMargemHorizontal := MARGEM_DEFAULT;
+  FMargemVertical := MARGEM_DEFAULT;
+  FMargemProporcaoVertical := PROPORCAO_IMAGEM_PADRAO;
+
+  //Configurando imagens
+  FImagemPrincipal := TImage.Create(Self);
+  FImagemPrincipal.Parent := Self;
+  FImagemPrincipal.Align := alClient;
+  FImagemPrincipal.AlignWithMargins := True;
+  FImagemPrincipal.Stretch := FStretch;
+  FImagemPrincipal.Proportional := FProportional;
+  FImagemPrincipal.Cursor := crDefault;
+  FImagemPrincipal.OnDblClick := DoPrincipalDblClick;
+
+  if csDesigning in Self.ComponentState then
+  begin
+    if TFile.Exists('C:\Users\Gustavo Mena Barreto\OneDrive\햞ea de Trabalho\Componentes\Imagens\queenLOGO.jpg') then
+    begin
+      FImagemPrincipal.Picture.LoadFromFile('C:\Users\Gustavo Mena Barreto\OneDrive\햞ea de Trabalho\Componentes\Imagens\queenLOGO.jpg')
+    end;
+  end;
+
+  FImagemEsquerda := TImage.Create(Self);
+  FImagemEsquerda.Parent := Self;
+  FImagemEsquerda.Anchors := [akLeft, akTop, akBottom];
+  FImagemEsquerda.Stretch := FStretch;
+  FImagemEsquerda.Proportional := FProportional;
+  FImagemEsquerda.Cursor := crHandPoint;
+  FImagemEsquerda.OnMouseDown := DoImageClick;
+
+  if csDesigning in Self.ComponentState then
+  begin
+    if TFile.Exists('C:\Users\Gustavo Mena Barreto\OneDrive\햞ea de Trabalho\Componentes\Imagens\metallica.jpeg') then
+    begin
+      FImagemEsquerda.Picture.LoadFromFile('C:\Users\Gustavo Mena Barreto\OneDrive\햞ea de Trabalho\Componentes\Imagens\metallica.jpeg');
+    end;
+  end;
+
+  FImagemDireita := TImage.Create(Self);
+  FImagemDireita.Parent := Self;
+  FImagemDireita.Stretch := FStretch;
+  FImagemDireita.Proportional := FProportional;
+  FImagemDireita.Cursor := crHandPoint;
+  FImagemDireita.OnMouseDown := DoImageClick;
+
+  if csDesigning in Self.ComponentState then
+  begin
+    if TFile.Exists('C:\Users\Gustavo Mena Barreto\OneDrive\햞ea de Trabalho\Componentes\Imagens\beatles.jpg') then
+    begin
+      FImagemDireita.Picture.LoadFromFile('C:\Users\Gustavo Mena Barreto\OneDrive\햞ea de Trabalho\Componentes\Imagens\beatles.jpg');
+    end;
+  end;
+
+  DefineMargens;
+end;
+
+procedure TCardViewer.CreateParams(var Params: TCreateParams);
+begin
+  inherited;
+  Caption := '';
+  ShowCaption := False;
+end;
+
+procedure TCardViewer.DefineMargens;
+begin
+  FImagemPrincipal.Margins.Left := (Self.Width div FMargemProporcaoVertical);
+  FImagemPrincipal.Margins.Right := (Self.Width div FMargemProporcaoVertical);
+  FImagemPrincipal.Margins.Top := FMargemHorizontal;
+  FImagemPrincipal.Margins.Bottom := FMargemHorizontal;
+
+  FImagemEsquerda.Left := FMargemVertical;
+  FImagemEsquerda.Top := FImagemPrincipal.Top + (FMargemHorizontal * 2);
+  FImagemEsquerda.Width := FImagemPrincipal.Width - FMargemVertical;
+  FImagemEsquerda.Height := FImagemPrincipal.Height - (FMargemHorizontal * 4);
+
+  FImagemDireita.Left := (Self.Width div FMargemProporcaoVertical) * 2;
+  FImagemDireita.Top := FImagemEsquerda.Top;
+  FImagemDireita.Width := FImagemEsquerda.Width;
+  FImagemDireita.Height :=  FImagemEsquerda.Height;
+end;
+
+destructor TCardViewer.Destroy;
+begin
+  FListaImagens.Free;
+  FProximaImagemDireita.Free;
+  FProximaImagemEsquerda.Free;
+  inherited;
+end;
+
+procedure TCardViewer.DoImageClick(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if Sender = FImagemEsquerda then
+  begin
+    SelecionaImagemEsquerda;
+  end;
+
+  if Sender = FImagemDireita then
+  begin
+    SelecionaImagemDireita;
+  end;
+end;
+
+procedure TCardViewer.DoPrincipalDblClick(Sender: TObject);
+begin
+  if ImagemPrincipal.Picture.Height = 0 then
+  begin
+    Exit;
+  end;
+
+  TfrmVisualizaCard.VisualizaPic(ImagemPrincipal.Picture);
+end;
+
+procedure TCardViewer.ExecutaCallAPI(prompt: string);
+var
+  RESTClient: TRESTClient;
+  RESTRequest: TRESTRequest;
+  RESTResponse: TRESTResponse;
+  JSONBody: TJSONObject;
+  OAuth2Athenticator: TOAuth2Authenticator;
+begin
+  JSONBody := TJSONObject.Create;
+  RESTClient := TRESTClient.Create('https://api.edenai.run/v2/image/generation');
+  RESTRequest := TRESTRequest.Create(nil);
+  RESTResponse := TRESTResponse.Create(nil);
+  OAuth2Athenticator := TOAuth2Authenticator.Create(nil);
+
+  try
+    RESTRequest.Client := RESTClient;
+    RESTRequest.Response := RESTResponse;
+    RESTRequest.Method := TRESTRequestMethod.rmPOST;
+
+    OAuth2Athenticator.TokenType := TOAuth2TokenType.ttBEARER;
+    var st1: TStringList := TStringList.Create;
+    st1.LoadFromFile('C:\Users\Gustavo Mena Barreto\OneDrive\햞ea de Trabalho\COMP3\Test-Token.txt');
+    OAuth2Athenticator.AccessToken :=  st1.Text;
+    st1.Free;
+
+    RESTClient.Authenticator := OAuth2Athenticator;
+
+    JSONBody.AddPair('providers', 'deepai');
+    JSONBody.AddPair('resolution', '256x256');
+    JSONBody.AddPair('text', prompt);
+    JSONBody.AddPair('response_as_dict', TJSONBool.Create(True));
+    JSONBody.AddPair('attributes_as_list', TJSONBool.Create(False));
+    JSONBody.AddPair('show_original_response', TJSONBool.Create(False));
+    JSONBody.AddPair('num_images', TJSONNumber.Create(3));
+
+    RESTRequest.AddBody(JSONBody.ToString, TRestContentType.ctAPPLICATION_JSON);
+
+    RESTRequest.Execute;
+
+    ExibeImagem(RESTResponse.Content);
+
+  finally
+    JSONBody.Free;
+    RESTClient.Free;
+    RESTResponse.Free;
+    RESTRequest.Free;
+    OAuth2Athenticator.Free;
+  end;
+end;
+
+procedure TCardViewer.ExibeImagem(imgJSON: string);
+
+  procedure LoadImage(imageStr: string; pic: TPicture);
+  begin
+    var stmImgCode: TStringStream := TStringStream.Create(imageStr);
+    var stmImgDecode: TStringStream := TStringStream.Create;
+    try
+      TNetEncoding.Base64.Decode(stmImgCode,stmImgDecode);
+      var JpgImg: TJPEGImage := TJPEGImage.Create;
+      try
+        stmImgDecode.Position := 0;
+        JpgImg.LoadFromStream(stmImgDecode);
+        pic.Assign(JpgImg);
+      finally
+        JpgImg.Free;
+      end;
+
+    finally
+      stmImgCode.Free;
+      stmImgDecode.Free;
+    end;
+  end;
+
+begin
+  var op: TOpenAIRoot := TJson.JsonToObject<TOpenAIRoot>(imgJSON);
+  try
+    LoadImage(op.deepAI.Items[0].Image, ImagemPrincipal.Picture);
+    LoadImage(op.deepAI.Items[1].Image, ImagemEsquerda.Picture);
+    LoadImage(op.deepAI.Items[2].Image, ImagemDireita.Picture);
+  finally
+    op.Free;
+  end;
+end;
+
+procedure TCardViewer.GeraImagemAI(prompt: string);
+begin
+  ExecutaCallAPI(prompt);
+end;
+
+procedure TCardViewer.Resize;
+begin
+  inherited;
+  DefineMargens;
+
+  FImagemPrincipal.BringToFront;
+end;
+
+procedure TCardViewer.SelecionaImagemDireita;
+begin
+  if FImagemDireita.Picture.Height = 0 then
+  begin
+    Exit;
+  end;
+
+  FProximaImagemEsquerda.Assign(FImagemEsquerda.Picture);
+  FImagemEsquerda.Picture.Assign(ImagemPrincipal.Picture);
+  FImagemPrincipal.Picture.Assign(ImagemDireita.Picture);
+  FImagemDireita.Picture.Assign(FProximaImagemDireita);
+
+  Inc(FIndiceAtual);
+  if (FIndiceAtual < FListaImagens.Count) and
+     ((FIndiceAtual + 3) < FListaImagens.Count) then
+  begin  
+    var indice: Integer := 1;
+    while not TFile.Exists(FListaImagens[FIndiceAtual - indice]) do
+    begin
+      FListaImagens.Delete(FIndiceAtual - indice);
+      Inc(Indice);
+      if FListaImagens.Count = 0 then
+        Exit;
+    end;
+
+    if TFile.Exists(FListaImagens[FIndiceAtual - 1]) then
+    begin
+      CarregaImagemGenerica(FListaImagens[FIndiceAtual - 1], FProximaImagemEsquerda);
+    end;
+
+    CarregaImagemGenerica(FListaImagens[FIndiceAtual + 3], FProximaImagemDireita);
+  end
+  else
+  begin
+    FProximaImagemDireita.Assign(nil);
+  end;
+end;
+
+procedure TCardViewer.SelecionaImagemEsquerda;
+begin
+  if FImagemEsquerda.Picture.Height = 0 then
+  begin
+    Exit;
+  end;
+
+  FProximaImagemDireita.Assign(FImagemDireita.Picture);
+  FImagemDireita.Picture.Assign(ImagemPrincipal.Picture);
+  FImagemPrincipal.Picture.Assign(ImagemEsquerda.Picture);
+  FImagemEsquerda.Picture.Assign(FProximaImagemEsquerda);
+
+  Dec(FIndiceAtual);
+  if (FIndiceAtual > 0) then
+  begin
+    var indice: Integer := 1;
+    while not TFile.Exists(FListaImagens[FIndiceAtual - indice]) do
+    begin
+      FListaImagens.Delete(FIndiceAtual - indice);
+      Dec(indice);
+      if FListaImagens.Count = 0 then
+        Exit;
+    end;
+
+    if TFile.Exists(FListaImagens[FIndiceAtual - 1]) then
+    begin
+      CarregaImagemGenerica(FListaImagens[FIndiceAtual - 1], FProximaImagemEsquerda);
+    end;
+  end
+  else
+  begin
+    FProximaImagemEsquerda.Assign(nil);
+  end;
+end;
+
+procedure TCardViewer.SetPastaImagens(const Value: string);
+begin
+  If FPastaImagens = Value then
+  begin
+    Exit;
+  end;
+
+  FPastaImagens := Value;
+  if not TDirectory.Exists(FPastaImagens) then
+  begin
+    Exit;
+  end;
+
+  FIndiceAtual := 0;
+  FListaImagens.Clear;
+
+  var listaImgs: TStringDynArray := TDirectory.GetFiles(FPastaImagens,'*.jpg, *.jpeg');
+  for var str: string in listaImgs do
+  begin
+    FListaImagens.Add(str);
+  end;
+
+// Outra opcao  
+//FListaImagens.AddStrings(TDirectory.GetFiles(FPastaImagens,'*.jpg, *.jpeg',TSearchOption.soTopDirectoryOnly));
+
+  if FListaImagens.Count = 0 then
+  begin
+    Exit;
+  end;
+
+  var i: Integer := 0;
+  While 1 < 4 do
+  begin
+    if i > FListaImagens.Count then
+    begin
+      Break;
+    end;
+
+    case i of
+      0: CarregaImagemEsquerda(FListaImagens[i]);
+      1: CarregaImagemPrincipal(FListaImagens[i]);
+      2: CarregaImagemDireita(FListaImagens[i]);
+      3: CarregaImagemGenerica(FListaImagens[i], FProximaImagemDireita);
+    end;
+
+    inc(i);
+  end;
+  
+end;
+
+procedure TCardViewer.SetProportional(const Value: Boolean);
+begin
+  FProportional := Value;
+  FImagemPrincipal.Proportional := FProportional;
+  FImagemEsquerda.Proportional := FProportional;
+  FImagemDireita.Proportional := FProportional;
+end;
+
+procedure TCardViewer.SetStretch(const Value: Boolean);
+begin
+  FStretch := Value;
+  FImagemPrincipal.Stretch := FStretch;
+  FImagemEsquerda.Stretch := FStretch;
+  FImagemDireita.Stretch := FStretch;
+end;
+
+end.

@@ -1,0 +1,18 @@
+unit Classe.Registro.Card.Viewer;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Classe.Card.Viewer, Classe.Editor.Propriedade.CardViewer, DesignIntf;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('Turma2024', [TCardViewer]);
+  RegisterComponentEditor(TCardViewer, TEditorMenu);
+end;
+
+end.

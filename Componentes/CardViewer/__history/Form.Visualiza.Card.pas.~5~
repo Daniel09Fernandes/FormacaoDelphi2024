@@ -1,0 +1,50 @@
+unit Form.Visualiza.Card;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TfrmVisualizaCard = class(TForm)
+    PanelControles: TPanel;
+    CheckBoxProportional: TCheckBox;
+    CheckBoxStretch: TCheckBox;
+    ImagePreview: TImage;
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure CheckBoxProportionalClick(Sender: TObject);
+    procedure CheckBoxStretchClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmVisualizaCard: TfrmVisualizaCard;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmVisualizaCard.CheckBoxProportionalClick(Sender: TObject);
+begin
+  ImagePreview.Proportional := CheckBoxProportional.Checked;
+end;
+
+procedure TfrmVisualizaCard.CheckBoxStretchClick(Sender: TObject);
+begin
+  ImagePreview.Stretch := CheckBoxStretch.Checked;
+end;
+
+procedure TfrmVisualizaCard.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_ESCAPE then
+  begin
+    Close;
+  end;
+end;
+
+end.

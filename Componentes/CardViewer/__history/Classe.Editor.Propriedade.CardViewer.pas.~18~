@@ -1,0 +1,93 @@
+unit Classe.Editor.Propriedade.CardViewer;
+
+interface
+
+uses
+  DesignEditors, DesignIntf, Vcl.Dialogs, System.SysUtils;
+
+type
+  //Object Inspector
+  TShowAbout = Class(TStringProperty)
+  public
+    function GetAttributes: TPropertyAttributes; override;
+    procedure Edit; override;
+  end;
+
+  //popup da IDE
+  TEditorMenu = class(TComponentEditor)
+  public
+    procedure ExecuteVerb(Index: Integer); override;
+    function GetVerb(Index: Integer): string; override;
+    function GetVerbCount: Integer; override;
+  end;
+
+  //object inspector
+  TFileNameProperty = class(TStringProperty)
+  public
+    function GetAttributes: TPropertyAttributes; override;
+    procedure Edit; override;
+  end;
+
+implementation
+
+{ TShowAbout }
+
+procedure TShowAbout.Edit;
+begin
+  inherited;
+  Showmessage('Sobre o Componente');
+end;
+
+function TShowAbout.GetAttributes: TPropertyAttributes;
+begin
+   Result := [paDialog];
+end;
+
+{ TEditorMenu }
+
+procedure TEditorMenu.ExecuteVerb(Index: Integer);
+begin
+  inherited;
+
+  case index of
+    0:
+    begin
+      Showmessage('Sobre o CardViewer');
+    end;
+  end;
+end;
+
+function TEditorMenu.GetVerb(Index: Integer): string;
+begin
+  Case Index of
+    0: Result := 'Sobre o CardViewer';
+  end;
+end;
+
+function TEditorMenu.GetVerbCount: Integer;
+begin
+  Result := 1;
+end;
+
+{ TFileNameProperty }
+
+procedure TFileNameProperty.Edit;
+begin
+  inherited;
+
+  var OpenDialog: TOpenDialog := TOpenDialog.Create(nil);
+  try
+    OpenDialog.FileName := GetValue;
+  finally
+
+  end;
+
+end;
+
+function TFileNameProperty.GetAttributes: TPropertyAttributes;
+begin
+  Result := [paDialog];
+
+end;
+
+end.
